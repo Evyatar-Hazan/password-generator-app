@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, KeyboardAvoidingView, StyleSheet, ScrollView } from 'react-native';
 import { Input, Button } from 'react-native-elements';
+import Algorithm from '../algorithm';
 
 const InputExample = () => {
   const [inputValue1, setInputValue1] = useState('');
@@ -20,6 +21,7 @@ const InputExample = () => {
     if (!isSaveDisabled) {
       console.log('Input 1:', inputValue1);
       console.log('Input 2:', inputValue2);
+      Algorithm(inputValue1, inputValue2)
     }
   };
 
