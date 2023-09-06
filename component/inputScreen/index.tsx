@@ -2,8 +2,15 @@ import React, { useState } from 'react';
 import { View, KeyboardAvoidingView, StyleSheet, ScrollView } from 'react-native';
 import { Input, Button } from 'react-native-elements';
 import Algorithm from '../algorithm';
+import { StackNavigationProp } from '@react-navigation/stack';
+import RootStackParamList from '../public';
 
-const InputExample = () => {
+
+type HomeScreenProps = {
+  navigation: StackNavigationProp<RootStackParamList, 'InputScreen'>;
+};
+
+const InputScreen = ({ navigation }: HomeScreenProps) => {
   const [inputValue1, setInputValue1] = useState('');
   const [inputValue2, setInputValue2] = useState('');
 
@@ -22,6 +29,7 @@ const InputExample = () => {
       console.log('Input 1:', inputValue1);
       console.log('Input 2:', inputValue2);
       Algorithm(inputValue1, inputValue2)
+      navigation.navigate('OutputScreen');
     }
   };
 
@@ -110,4 +118,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default InputExample;
+export default InputScreen;
