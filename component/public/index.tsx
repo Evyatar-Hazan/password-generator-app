@@ -1,6 +1,4 @@
-type RootStackParamList = {
-    InputScreen: undefined;
-    OutputScreen: undefined;
-  };
-
-export default RootStackParamList
+export type RootStackParamList = {
+  InputScreen: undefined;
+  OutputScreen: { hashedText: string };
+};

@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { View, KeyboardAvoidingView, StyleSheet, ScrollView } from 'react-native';
 import { Input, Button } from 'react-native-elements';
-import Algorithm from '../algorithm';
+import { getHash } from '../hashHandling/index';
 import { StackNavigationProp } from '@react-navigation/stack';
-import RootStackParamList from '../public';
+import { RootStackParamList } from '../public';
 
 
 type HomeScreenProps = {
@@ -28,8 +28,8 @@ const InputScreen = ({ navigation }: HomeScreenProps) => {
     if (!isSaveDisabled) {
       console.log('Input 1:', inputValue1);
       console.log('Input 2:', inputValue2);
-      Algorithm(inputValue1, inputValue2)
-      navigation.navigate('OutputScreen');
+      const hashedText = getHash(inputValue1, inputValue2)
+      navigation.navigate('OutputScreen',  { hashedText } );
     }
   };
 
