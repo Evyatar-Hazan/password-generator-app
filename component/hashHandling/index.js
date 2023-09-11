@@ -52,15 +52,31 @@ const hashString = str => {
 };
 
 export const getUpperCasePassword = str => {
-  return str.replace(/[a-z]/g, function (match) {
+  let changed = false; 
+  let newString = str.replace(/[a-z]/g, function (match) {
     const hash = hashString(match);
     if (hash % 2 === 0) {
+      changed = true; 
       return match.toUpperCase();
     } else {
       return match;
     }
   });
+
+  if (!changed) {
+    newString = newString.replace(/([a-zA-Z])/, function (match) {
+      return match.toUpperCase();
+    });
+  }
+  
+  if (!/[a-z]/.test(newString)) {
+    newString = newString.replace(/([A-Z])/, function (match) {
+      return match.toLowerCase();
+    });
+  }
+  return newString;
 };
+
 
 
 export const getTransformToSign = (str) => {
