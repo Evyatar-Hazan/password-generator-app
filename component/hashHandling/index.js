@@ -1,5 +1,6 @@
 import CryptoJS from 'crypto-js';
 
+
 export const getHash = (text1, text2) => {
   const textToHash = text1 + text2;
   const hashedText = CryptoJS.SHA256(textToHash).toString();
@@ -7,23 +8,74 @@ export const getHash = (text1, text2) => {
   return hashedText;
 };
 
-export const getNumbersPassword = (hash) => {
+export const getNumbersPassword = (hash, numberCharacters) => {
   const numbers = hash.match(/\d+/g);
   if (numbers) {
-    let numbersPassword = String(numbers.length);
-    let index = 0;
-
-    while (numbersPassword.length < 12) {
-      if (index === numbers.length) {
-        index = 0;
-      }
-      numbersPassword += numbers[index];
-      index++;
-    }
-    return numbersPassword.substring(0, 12); 
+    return numbers.join('').substring(0, numberCharacters);
   } else {
-    console.log('No numbers found in the string.');
-    return null; 
+    console.log('No letters found in the string.');
+    return null;
   }
 };
 
+export const getLettersPassword = (hash, numberCharacters) => {
+  const letters = hash.match(/[a-z]+/g);
+  if (letters) {
+    return letters.join('').substring(0, numberCharacters);
+  } else {
+    console.log('No letters found in the string.');
+    return null;
+  }
+};
+
+export const getNumbersAndLettersPassword = (numbers, letters, numberCharacters) => {
+  const maxLength = Math.max(numbers.length, letters.length);
+  let numbersAndLetters = '';
+
+  for (let index = 0; index < maxLength; index++) {
+    if (index < numbers.length) {
+      numbersAndLetters += numbers[index];
+    }
+    if (index < letters.length) {
+      numbersAndLetters += letters[index];
+    }
+  }
+  return numbersAndLetters.substring(0, numberCharacters);
+};
+
+const hashString = str => {
+  let hash = 0;
+  for (let i = 0; i < str.length; i++) {
+    hash = (hash << 5) - hash + str.charCodeAt(i);
+  }
+  return hash;
+};
+
+export const getUpperCasePassword = str => {
+  return str.replace(/[a-z]/g, function (match) {
+    const hash = hashString(match);
+    if (hash % 2 === 0) {
+      return match.toUpperCase();
+    } else {
+      return match;
+    }
+  });
+};
+
+
+export const getTransformToSign = (str) => {
+  const signs = ["?", "@", "#", "$", "&", "!"];
+  const hash = hashString(str);
+  const selectedSignIndex = Math.abs(hash) % signs.length;
+  const selectedSign = signs[selectedSignIndex];
+  return str.replace(/[a-zA-Z0-9]/, selectedSign);
+}
+
+export const passwordGenerator = (hashedText, numberCharacters) => {
+  const numbersPassword = getNumbersPassword(hashedText, numberCharacters);
+  const lettersPassword = getLettersPassword(hashedText, numberCharacters);
+  const numbersAndLettersPassword = getNumbersAndLettersPassword(numbersPassword, lettersPassword, numberCharacters);
+  const upperCasePassword = getUpperCasePassword(numbersAndLettersPassword);
+  const transformToSign = getTransformToSign(upperCasePassword);
+  return {numbersPassword, lettersPassword, numbersAndLettersPassword, upperCasePassword, transformToSign}
+}
