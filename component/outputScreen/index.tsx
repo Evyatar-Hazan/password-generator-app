@@ -1,9 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, Clipboard, ToastAndroid, StyleSheet, ScrollView } from 'react-native';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList } from '../public/index';
-import { RouteProp } from '@react-navigation/native';
-import { passwordGenerator } from '../hashHandling';
+import React, {useState, useEffect} from 'react';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Clipboard,
+  ToastAndroid,
+  StyleSheet,
+  ScrollView,
+} from 'react-native';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {RootStackParamList} from '../public/index';
+import {RouteProp} from '@react-navigation/native';
+import {passwordGenerator} from '../hashHandling';
+import LinearGradient from 'react-native-linear-gradient';
+
 
 type OutputScreenProps = {
   navigation: StackNavigationProp<RootStackParamList, 'OutputScreen'>;
@@ -13,6 +23,8 @@ type OutputScreenProps = {
 type GeneratedPasswords = {
   [key: string]: string;
 };
+
+type PasswordType = keyof GeneratedPasswords;
 
 function SquareButton({
   label,
@@ -25,27 +37,62 @@ function SquareButton({
 }) {
   return (
     <TouchableOpacity
-      style={[
-        styles.squareButton,
-        isActive ? styles.activeButton : null,
-      ]}
-      onPress={onPress}
-    >
-      <Text style={[styles.buttonLabel, isActive ? styles.activeButtonLabel : null]}>{label}</Text>
+      style={[styles.squareButton, isActive ? styles.activeButton : null]}
+      onPress={onPress}>
+      <Text
+        style={[
+          styles.buttonLabel,
+          isActive ? styles.activeButtonLabel : null,
+        ]}>
+        {label}
+      </Text>
     </TouchableOpacity>
   );
 }
 
-function OutputScreen({ route, navigation }: OutputScreenProps) {
-  const { hashedText } = route.params;
-  const [generatedPasswords, setGeneratedPasswords] = useState<GeneratedPasswords>({
-    numbersPassword: '',
-    lettersPassword: '',
-    numbersAndLettersPassword: '',
-    upperCasePassword: '',
-    transformToSign: '',
-  });
+function getSecurityLevelColor(securityLevel: string) {
+  switch (securityLevel) {
+    case 'Low':
+      return 'red'; // You can choose your desired color
+    case 'Medium':
+      return 'orange'; // You can choose your desired color
+    case 'High':
+      return 'green'; // You can choose your desired color
+    case 'Very High':
+      return 'blue'; // You can choose your desired color
+    default:
+      return 'gray'; // Default color
+  }
+}
+
+function OutputScreen({route, navigation}: OutputScreenProps) {
+  const {hashedText} = route.params;
+  const [generatedPasswords, setGeneratedPasswords] =
+    useState<GeneratedPasswords>({
+      numbersPassword: '',
+      lettersPassword: '',
+      numbersAndLettersPassword: '',
+      upperCasePassword: '',
+      transformToSign: '',
+    });
   const [selectedLength, setSelectedLength] = useState<number | null>(8); // Set initial value to 8
+
+  const mapGeneratedPasswords: Record<
+    PasswordType,
+    {label: string; securityLevel: string}
+  > = {
+    numbersPassword: {label: 'Numbers only:', securityLevel: 'Low'},
+    lettersPassword: {label: 'Letters only:', securityLevel: 'Medium'},
+    numbersAndLettersPassword: {
+      label: 'Numbers and letters:',
+      securityLevel: 'Medium',
+    },
+    upperCasePassword: {
+      label: 'Including capital letters:',
+      securityLevel: 'High',
+    },
+    transformToSign: {label: 'Including a sign:', securityLevel: 'Very High'},
+  };
 
   const generatePasswords = (length: number) => {
     const {
@@ -69,7 +116,10 @@ function OutputScreen({ route, navigation }: OutputScreenProps) {
 
   const copyToClipboard = (passwordType: string) => {
     Clipboard.setString(generatedPasswords[passwordType]);
-    ToastAndroid.show(`Copied ${passwordType} to clipboard`, ToastAndroid.SHORT);
+    ToastAndroid.show(
+      `Copied ${passwordType} to clipboard`,
+      ToastAndroid.SHORT,
+    );
   };
 
   useEffect(() => {
@@ -80,24 +130,58 @@ function OutputScreen({ route, navigation }: OutputScreenProps) {
     <View style={styles.container}>
       <Text style={styles.header}>Password Generator</Text>
       <View style={styles.buttonContainer}>
-        <SquareButton label="12" isActive={selectedLength === 12} onPress={() => generatePasswords(12)} />
-        <SquareButton label="8" isActive={selectedLength === 8} onPress={() => generatePasswords(8)} />
-        <SquareButton label="4" isActive={selectedLength === 4} onPress={() => generatePasswords(4)} />
+        <SquareButton
+          label="12"
+          isActive={selectedLength === 12}
+          onPress={() => generatePasswords(12)}
+        />
+        <SquareButton
+          label="8"
+          isActive={selectedLength === 8}
+          onPress={() => generatePasswords(8)}
+        />
+        <SquareButton
+          label="4"
+          isActive={selectedLength === 4}
+          onPress={() => generatePasswords(4)}
+        />
       </View>
 
       <ScrollView style={styles.outputContainer}>
-        {Object.keys(generatedPasswords).map((passwordType) => (
-          <View key={passwordType} style={styles.outputFrame}>
-            <Text style={styles.label}>{passwordType} Password</Text>
-            <View style={styles.outputRow}>
-              <Text style={styles.output}>{generatedPasswords[passwordType]}</Text>
-              <TouchableOpacity
-                style={styles.copyButton}
-                onPress={() => copyToClipboard(passwordType)}
-              >
-                <Text style={styles.copyButtonText}>Copy</Text>
-              </TouchableOpacity>
+        {Object.keys(generatedPasswords).map((passwordType: string) => (
+          <View key={passwordType}>
+            <View style={styles.securityLevelIndicator}>
+              <Text style={styles.label}>
+                {mapGeneratedPasswords[passwordType].label}
+              </Text>
+              <Text
+                style={styles.label}
+                >
+                {mapGeneratedPasswords[passwordType].securityLevel}
+              </Text>
             </View>
+            <LinearGradient
+              style={styles.outputFrame}
+              colors={[
+                getSecurityLevelColor(
+                  mapGeneratedPasswords[passwordType].securityLevel
+                ),
+                'transparent', // You can adjust the transparent color to control the gradient effect
+              ]}
+              start={{ x: 0, y: 0 }}
+              end={{ x: 1, y: 0 }}
+            >
+              <View style={styles.outputRow}>
+                <Text style={styles.output}>
+                  {generatedPasswords[passwordType]}
+                </Text>
+                <TouchableOpacity
+                  style={styles.copyButton}
+                  onPress={() => copyToClipboard(passwordType)}>
+                  <Text style={styles.copyButtonText}>Copy</Text>
+                </TouchableOpacity>
+              </View>
+            </LinearGradient>
           </View>
         ))}
       </ScrollView>
@@ -124,7 +208,7 @@ const styles = StyleSheet.create({
   },
   squareButton: {
     backgroundColor: 'transparent',
-    borderColor: '#007BFF',
+    borderColor: '#28a745',
     borderWidth: 2,
     width: 80,
     height: 40,
@@ -133,11 +217,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   activeButton: {
-    backgroundColor: '#0056b3',
+    backgroundColor: '#28a745',
   },
   buttonLabel: {
     fontSize: 20,
-    color: '#007BFF',
+    color: '#28a745',
   },
   activeButtonLabel: {
     color: 'white',
@@ -155,7 +239,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     marginBottom: 8,
-    textAlign: 'center',
+    marginLeft: 10
   },
   outputRow: {
     flexDirection: 'row',
@@ -165,17 +249,34 @@ const styles = StyleSheet.create({
   output: {
     fontSize: 18,
     flex: 1,
+    textAlign: 'left',
   },
   copyButton: {
-    backgroundColor: '#28a745',
+    backgroundColor: 'grey',
     paddingVertical: 8,
     paddingHorizontal: 16,
     borderRadius: 8,
+    marginLeft: 100,
   },
   copyButtonText: {
     fontSize: 16,
     color: 'white',
   },
+  securityLevelIndicator: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  securityLevelText: {
+    color: 'white',
+    padding: 4,
+    borderRadius: 4,
+    fontWeight: 'bold',
+    marginLeft: 10,
+    width: 'auto',
+    textAlign: 'right',
+    // height: 40,
+  },
 });
-
+// right left
 export default OutputScreen;
