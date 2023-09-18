@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
-import { View, KeyboardAvoidingView, StyleSheet, ScrollView } from 'react-native';
+import {
+  View,
+  KeyboardAvoidingView,
+  StyleSheet,
+  ScrollView,
+  Platform,
+} from 'react-native';
 import { Input, Button } from 'react-native-elements';
 import { getHash } from '../hashHandling/index';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../public';
-
 
 type HomeScreenProps = {
   navigation: StackNavigationProp<RootStackParamList, 'InputScreen'>;
@@ -28,13 +33,17 @@ const InputScreen = ({ navigation }: HomeScreenProps) => {
     if (!isSaveDisabled) {
       console.log('Input 1:', inputValue1);
       console.log('Input 2:', inputValue2);
-      const hashedText = getHash(inputValue1, inputValue2)
-      navigation.navigate('OutputScreen',  { hashedText } );
+      const hashedText = getHash(inputValue1, inputValue2);
+      navigation.navigate('OutputScreen', { hashedText });
     }
   };
 
   return (
-    <KeyboardAvoidingView behavior="padding" style={styles.container}>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+      style={styles.container}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? -64 : 0} // Adjust the value as needed
+    >
       <ScrollView
         contentContainerStyle={styles.scrollContent}
         keyboardShouldPersistTaps="handled"
@@ -45,7 +54,7 @@ const InputScreen = ({ navigation }: HomeScreenProps) => {
             placeholderTextColor="#aaa"
             inputStyle={styles.input}
             containerStyle={styles.inputWrapper}
-            inputContainerStyle={styles.inputContainerStyle} 
+            inputContainerStyle={styles.inputContainerStyle}
             underlineColorAndroid="transparent"
             onChangeText={handleInputChange1}
             value={inputValue1}
@@ -55,7 +64,7 @@ const InputScreen = ({ navigation }: HomeScreenProps) => {
             placeholderTextColor="#aaa"
             inputStyle={styles.input}
             containerStyle={styles.inputWrapper}
-            inputContainerStyle={styles.inputContainerStyle} 
+            inputContainerStyle={styles.inputContainerStyle}
             underlineColorAndroid="transparent"
             onChangeText={handleInputChange2}
             value={inputValue2}
@@ -65,7 +74,7 @@ const InputScreen = ({ navigation }: HomeScreenProps) => {
             type="solid"
             onPress={handleSave}
             disabled={isSaveDisabled}
-            buttonStyle={[styles.saveButton, isSaveDisabled && styles.disabledButton]}
+            buttonStyle={styles.saveButton}
             titleStyle={styles.saveButtonText}
           />
         </View>
@@ -107,9 +116,6 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     marginTop: 10,
     backgroundColor: '#2ecc71',
-  },
-  disabledButton: {
-    backgroundColor: '#ccc',
   },
   saveButtonText: {
     color: 'white',

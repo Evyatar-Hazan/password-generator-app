@@ -3,7 +3,6 @@ import {
   View,
   Text,
   TouchableOpacity,
-  Clipboard,
   ToastAndroid,
   StyleSheet,
   ScrollView,
@@ -13,6 +12,7 @@ import {RootStackParamList} from '../public/index';
 import {RouteProp} from '@react-navigation/native';
 import {passwordGenerator} from '../hashHandling';
 import LinearGradient from 'react-native-linear-gradient';
+import Clipboard from '@react-native-community/clipboard';
 
 
 type OutputScreenProps = {
@@ -51,17 +51,17 @@ function SquareButton({
 }
 
 function getSecurityLevelColor(securityLevel: string) {
-  switch (securityLevel) {
-    case 'Low':
-      return 'red'; // You can choose your desired color
-    case 'Medium':
-      return 'orange'; // You can choose your desired color
-    case 'High':
-      return 'green'; // You can choose your desired color
-    case 'Very High':
-      return 'blue'; // You can choose your desired color
-    default:
-      return 'gray'; // Default color
+  const colorsMap: { [key: string]: string }  = {
+    'Low': 'red',
+    'Medium': 'orange',
+    'High': 'green',
+    'Very High': 'blue'
+  }
+  if (colorsMap[securityLevel]) {
+    return colorsMap[securityLevel]
+  }
+  else {
+    return 'gray'
   }
 }
 
@@ -128,8 +128,7 @@ function OutputScreen({route, navigation}: OutputScreenProps) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.header}>Password Generator</Text>
-      <View style={styles.buttonContainer}>
+      <View style={styles.buttonContainerTop}>
         <SquareButton
           label="12"
           isActive={selectedLength === 12}
@@ -198,8 +197,13 @@ const styles = StyleSheet.create({
   },
   header: {
     fontSize: 24,
-    marginBottom: 16,
     fontWeight: 'bold',
+  },
+  buttonContainerTop: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 16,
+    width: '100%',
   },
   buttonContainer: {
     flexDirection: 'row',
@@ -210,9 +214,9 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     borderColor: '#28a745',
     borderWidth: 2,
-    width: 80,
+    width: 100,
     height: 40,
-    borderRadius: 8, // Square button
+    borderRadius: 8, 
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -275,8 +279,6 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     width: 'auto',
     textAlign: 'right',
-    // height: 40,
   },
 });
-// right left
 export default OutputScreen;
