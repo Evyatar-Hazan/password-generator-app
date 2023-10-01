@@ -1,0 +1,15 @@
+{
+    "inputScreen": {
+        "createPassword": "יצירת סיסמא",
+        "textFirst": "הקלד מילה ראשונה...",
+        "secondText": "הקלד מילה שנייה...",
+        "language": "Switch to English"
+    },
+    "outputScreen": {
+        "numbersPassword": "מספרים בלבד:"
+    },
+    "app": {
+        "inputScreen": "מסך הקלט",
+        "outputScreen": "מסך הפלט"
+    }
+}

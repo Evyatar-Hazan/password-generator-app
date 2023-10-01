@@ -8,7 +8,7 @@ import PasswordButton from './passwordButton';
 import OutputContainer from './outputContainer';
 
 
-type OutputScreenProps = {
+export type OutputScreenProps = {
   navigation: StackNavigationProp<RootStackParamList, 'OutputScreen'>;
   route: RouteProp<RootStackParamList, 'OutputScreen'>;
 };
@@ -19,7 +19,7 @@ type GeneratedPasswords = {
 
 
 
-const OutputScreen = ({route, navigation}: OutputScreenProps) => {
+const OutputScreen: React.FC<OutputScreenProps> = ({route, navigation}: OutputScreenProps) => {
   const {hashedText} = route.params;
   const [generatedPasswords, setGeneratedPasswords] =
     useState<GeneratedPasswords>({

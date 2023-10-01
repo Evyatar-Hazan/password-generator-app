@@ -10,7 +10,8 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import Clipboard from '@react-native-community/clipboard';
 import {Svg, Path} from 'react-native-svg';
-
+import { languageHandling, currentLanguage } from '../languageHandling/index';
+console.log("🚀 ~ file: outputContainer.tsx:14 ~ currentLanguage:", currentLanguage())
 type GeneratedPasswords = {
   [key: string]: string;
 };
@@ -21,7 +22,7 @@ const mapGeneratedPasswords: Record<
   PasswordType,
   {label: string; securityLevel: string}
 > = {
-  numbersPassword: {label: 'Numbers only:', securityLevel: 'Low'},
+  numbersPassword: {label: languageHandling('outputScreen.numbersPassword'), securityLevel: 'Low'},
   lettersPassword: {label: 'Letters only:', securityLevel: 'Medium'},
   numbersAndLettersPassword: {
     label: 'Numbers and letters:',
