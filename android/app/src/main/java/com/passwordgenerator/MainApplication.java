@@ -1,4 +1,4 @@
-package com.passwordgenerator;
+package com.passwordgeneratorevyatar;
 
 import android.app.Application;
 import com.facebook.react.PackageList;

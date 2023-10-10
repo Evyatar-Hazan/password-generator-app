@@ -1,4 +1,4 @@
-package com.passwordgenerator;
+package com.passwordgeneratorevyatar;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
