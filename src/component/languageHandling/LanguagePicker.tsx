@@ -2,6 +2,10 @@ import React, {useState} from 'react';
 import {useTranslation} from 'react-i18next';
 import {Modal, View, Text, Pressable, StyleSheet} from 'react-native';
 
+type languagesMap = {
+  [key: string]: string;
+};
+
 const LanguagePicker = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const {i18n} = useTranslation();
@@ -11,7 +15,7 @@ const LanguagePicker = () => {
     {name: 'en', label: 'English'},
   ];
 
-  const languagesMap = {
+  const languagesMap: languagesMap = {
     he: 'עברית',
     en: 'English',
   };
