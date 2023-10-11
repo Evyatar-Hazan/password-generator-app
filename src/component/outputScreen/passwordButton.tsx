@@ -1,5 +1,10 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet } from 'react-native';
+import {TouchableOpacity, Text, StyleSheet} from 'react-native';
+import {useTranslation} from 'react-i18next';
+
+type levelMap = {
+  [key: string]: string;
+};
 
 const PasswordButton = ({
   label,
@@ -10,12 +15,22 @@ const PasswordButton = ({
   isActive: boolean;
   onPress: () => void;
 }) => {
+  const {t} = useTranslation();
+  const levelMap: levelMap = {
+    4: 'outputScreen.label4',
+    8: 'outputScreen.label8',
+    12: 'outputScreen.label12',
+  };
   return (
     <TouchableOpacity
       style={[styles.squareButton, isActive ? styles.activeButton : null]}
       onPress={onPress}>
-      <Text style={[styles.buttonLabel, isActive ? styles.activeButtonLabel : null]}>
-        {label}
+      <Text
+        style={[
+          styles.buttonLabel,
+          isActive ? styles.activeButtonLabel : null,
+        ]}>
+        {t(levelMap[label])}
       </Text>
     </TouchableOpacity>
   );
@@ -28,7 +43,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     width: 100,
     height: 40,
-    borderRadius: 8, 
+    borderRadius: 8,
     alignItems: 'center',
     justifyContent: 'center',
   },

@@ -1,0 +1,29 @@
+{
+  "inputScreen": {
+    "createPassword": "יצירת סיסמא",
+    "textFirst": "הקלד מילה ראשונה...",
+    "secondText": "הקלד מילה שנייה..."
+  },
+  "outputScreen": {
+    "numbersPassword": "מספרים בלבד:",
+    "lettersPassword": "אותיות בלבד:",
+    "numbersAndLettersPassword": "מספרים ואותיות:",
+    "upperCasePassword": "כולל אותיות גדולות:",
+    "transformToSign": "כולל סימן:",
+    "low": "נמוך",
+    "medium": "בינוני",
+    "high": "גבוה",
+    "veryHigh": "מאוד גבוה",
+    "label4": "4",
+    "label8": "8",
+    "label12": "12"
+  },
+  "app": {
+    "inputScreen": "מסך הקלט",
+    "outputScreen": "מסך הפלט"
+  },
+  "privacyPolicy": {
+    "privacyPolicy": "על ידי שימוש באפליקציה זו, אתה מסכים ל ",
+    "title": "מדיניות הפרטיות שלנו"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "inputScreen": {
+    "createPassword": "Create Password",
+    "textFirst": "Enter text first...",
+    "secondText": "Insert second text..."
+  },
+  "outputScreen": {
+    "numbersPassword": "Numbers only:",
+    "lettersPassword": "Letters only:",
+    "numbersAndLettersPassword": "Numbers and Letters:",
+    "upperCasePassword": "Including capital letters:",
+    "transformToSign": "Including a sign:",
+    "low": "Low",
+    "medium": "Medium",
+    "high": "High",
+    "veryHigh": "Very high",
+    "label4": "4",
+    "label8": "8",
+    "label12": "12"
+  },
+  "app": {
+    "inputScreen": "input Screen",
+    "outputScreen": "output Screen"
+  },
+  "privacyPolicy": {
+    "privacyPolicy": "By using this app, you agree to our ",
+    "title": "Privacy Policy"
+  }
+}

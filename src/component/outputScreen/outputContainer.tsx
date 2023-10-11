@@ -10,61 +10,62 @@ import {
 import LinearGradient from 'react-native-linear-gradient';
 import Clipboard from '@react-native-community/clipboard';
 import {Svg, Path} from 'react-native-svg';
-import { languageHandling, currentLanguage } from '../languageHandling/index';
-console.log("🚀 ~ file: outputContainer.tsx:14 ~ currentLanguage:", currentLanguage())
+import {useTranslation} from 'react-i18next';
+
 type GeneratedPasswords = {
   [key: string]: string;
 };
 
 type PasswordType = keyof GeneratedPasswords;
 
-const mapGeneratedPasswords: Record<
-  PasswordType,
-  {label: string; securityLevel: string}
-> = {
-  numbersPassword: {label: languageHandling('outputScreen.numbersPassword'), securityLevel: 'Low'},
-  lettersPassword: {label: 'Letters only:', securityLevel: 'Medium'},
-  numbersAndLettersPassword: {
-    label: 'Numbers and letters:',
-    securityLevel: 'Medium',
-  },
-  upperCasePassword: {
-    label: 'Including capital letters:',
-    securityLevel: 'High',
-  },
-  transformToSign: {label: 'Including a sign:', securityLevel: 'Very High'},
-};
-
-const getSecurityLevelColor = (securityLevel: string) => {
-  const colorsMap: {[key: string]: string} = {
-    Low: 'red',
-    Medium: 'orange',
-    High: 'green',
-    'Very High': 'blue',
-  };
-  if (colorsMap[securityLevel]) {
-    return colorsMap[securityLevel];
-  } else {
-    return 'gray';
-  }
-};
-
-const copyToClipboard = (
-  generatedPasswords: GeneratedPasswords,
-  passwordType: string,
-) => {
-  Clipboard.setString(generatedPasswords[passwordType]);
-  ToastAndroid.show(
-    `Copied ${mapGeneratedPasswords[passwordType].label} to clipboard`,
-    ToastAndroid.SHORT,
-  );
-};
-
 const OutputContainer = ({
   generatedPasswords,
 }: {
   generatedPasswords: GeneratedPasswords;
 }) => {
+  const {t} = useTranslation();
+
+  const mapGeneratedPasswords: Record<
+    PasswordType,
+    {label: string; securityLevel: string; color: string}
+  > = {
+    numbersPassword: {
+      label: t('outputScreen.numbersPassword'),
+      securityLevel: t('outputScreen.low'),
+      color: 'red',
+    },
+    lettersPassword: {
+      label: t('outputScreen.lettersPassword'),
+      securityLevel: t('outputScreen.medium'),
+      color: 'orange',
+    },
+    numbersAndLettersPassword: {
+      label: t('outputScreen.numbersAndLettersPassword'),
+      securityLevel: t('outputScreen.medium'),
+      color: 'orange',
+    },
+    upperCasePassword: {
+      label: t('outputScreen.upperCasePassword'),
+      securityLevel: t('outputScreen.high'),
+      color: 'green',
+    },
+    transformToSign: {
+      label: t('outputScreen.transformToSign'),
+      securityLevel: t('outputScreen.veryHigh'),
+      color: 'blue',
+    },
+  };
+
+  const copyToClipboard = (
+    generatedPasswords: GeneratedPasswords,
+    passwordType: string,
+  ) => {
+    Clipboard.setString(generatedPasswords[passwordType]);
+    ToastAndroid.show(
+      `Copied ${mapGeneratedPasswords[passwordType].label} to clipboard`,
+      ToastAndroid.SHORT,
+    );
+  };
   return (
     <ScrollView style={styles.outputContainer}>
       {Object.keys(generatedPasswords).map((passwordType: string) => (
@@ -79,12 +80,7 @@ const OutputContainer = ({
           </View>
           <LinearGradient
             style={styles.outputFrame}
-            colors={[
-              getSecurityLevelColor(
-                mapGeneratedPasswords[passwordType].securityLevel,
-              ),
-              'transparent',
-            ]}
+            colors={[mapGeneratedPasswords[passwordType].color, 'transparent']}
             start={{x: 0, y: 0}}
             end={{x: 1, y: 0}}>
             <View style={styles.outputRow}>

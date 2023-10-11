@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   View,
   KeyboardAvoidingView,
@@ -6,16 +6,18 @@ import {
   ScrollView,
   Platform,
 } from 'react-native';
-import { Input, Button } from 'react-native-elements';
-import { getHash } from '../hashHandling/index';
-import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList } from '../public';
+import {Input, Button} from 'react-native-elements';
+import {getHash} from '../hashHandling/index';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {RootStackParamList} from '../public';
+import {useTranslation} from 'react-i18next';
 
 type HomeScreenProps = {
   navigation: StackNavigationProp<RootStackParamList, 'InputScreen'>;
 };
 
-const InputScreen = ({ navigation }: HomeScreenProps) => {
+const InputScreen = ({navigation}: HomeScreenProps) => {
+  const {t} = useTranslation();
   const [inputValue1, setInputValue1] = useState('');
   const [inputValue2, setInputValue2] = useState('');
 
@@ -34,7 +36,7 @@ const InputScreen = ({ navigation }: HomeScreenProps) => {
       console.log('Input 1:', inputValue1);
       console.log('Input 2:', inputValue2);
       const hashedText = getHash(inputValue1, inputValue2);
-      navigation.navigate('OutputScreen', { hashedText });
+      navigation.navigate('OutputScreen', {hashedText});
     }
   };
 
@@ -46,11 +48,10 @@ const InputScreen = ({ navigation }: HomeScreenProps) => {
     >
       <ScrollView
         contentContainerStyle={styles.scrollContent}
-        keyboardShouldPersistTaps="handled"
-      >
+        keyboardShouldPersistTaps="handled">
         <View style={styles.inputContainer}>
           <Input
-            placeholder="Enter text first..."
+            placeholder={t('inputScreen.textFirst')}
             placeholderTextColor="#aaa"
             inputStyle={styles.input}
             containerStyle={styles.inputWrapper}
@@ -60,7 +61,7 @@ const InputScreen = ({ navigation }: HomeScreenProps) => {
             value={inputValue1}
           />
           <Input
-            placeholder="Insert second text..."
+            placeholder={t('inputScreen.secondText')}
             placeholderTextColor="#aaa"
             inputStyle={styles.input}
             containerStyle={styles.inputWrapper}
@@ -70,7 +71,7 @@ const InputScreen = ({ navigation }: HomeScreenProps) => {
             value={inputValue2}
           />
           <Button
-            title="Create Password"
+            title={t('inputScreen.createPassword')}
             type="solid"
             onPress={handleSave}
             disabled={isSaveDisabled}
