@@ -2,6 +2,9 @@ import i18n from 'i18next';
 import {initReactI18next} from 'react-i18next';
 import {en, he} from './translations/index';
 
+
+const { languageDetectorPlugin } = require("./languageDetectorPlugin");
+
 const resources = {
   en: {
     translation: en,
@@ -11,14 +14,21 @@ const resources = {
   },
 };
 
-i18n.use(initReactI18next).init({
-  compatibilityJSON: 'v3',
-  resources,
-  //language to use if translations in user language are not available
-  fallbackLng: 'en',
-  interpolation: {
-    escapeValue: false, // not needed for react!!
-  },
-});
+
+i18n
+  .use(initReactI18next)
+  .use(languageDetectorPlugin)
+  .init({
+    compatibilityJSON: 'v3',
+    resources,
+    //language to use if translations in user language are not available
+    fallbackLng: "en",
+    interpolation: {
+      escapeValue: false, // not needed for react!!
+    },
+    react: {
+      useSuspense: false, //in case you have any suspense related errors
+    },
+  });
 
 export default i18n;
