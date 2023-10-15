@@ -18,9 +18,9 @@
     "label8": "8",
     "label12": "12"
   },
-  "app": {
-    "inputScreen": "input Screen",
-    "outputScreen": "output Screen"
+  "navigation": {
+    "inputScreen": "Input Screen",
+    "outputScreen": "Output Screen"
   },
   "privacyPolicy": {
     "privacyPolicy": "By using this app, you agree to our ",
