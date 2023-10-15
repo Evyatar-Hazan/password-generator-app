@@ -23,7 +23,14 @@
     "outputScreen": "Output Screen"
   },
   "privacyPolicy": {
-    "privacyPolicy": "By using this app, you agree to our ",
+    "privacyPolicy": "By using this app, you agree to our Privacy Policy",
     "title": "Privacy Policy"
+  },
+  "sideMenu": {
+    "language": "language"
+  },
+  "language": {
+    "en": "English",
+    "he": "Hebrew"
   }
 }
