@@ -23,7 +23,7 @@ i18n
     compatibilityJSON: 'v3',
     resources,
     //language to use if translations in user language are not available
-    lng: I18nManager.isRTL ? 'he' : 'en',
+    fallbackLng: I18nManager.isRTL ? 'he' : 'en',
     interpolation: {
       escapeValue: false, // not needed for react!!
     },
