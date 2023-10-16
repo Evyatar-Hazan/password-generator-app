@@ -1,6 +1,12 @@
 import {Text, TouchableOpacity, Linking} from 'react-native';
 import Styles from './styles';
 import {useTranslation} from 'react-i18next';
+import {StackNavigationProp} from '@react-navigation/stack';
+import {RootStackParamList} from '../public';
+
+type PrivacyPolicy = {
+  navigation: StackNavigationProp<RootStackParamList, 'PrivacyPolicy'>;
+};
 
 const PrivacyPolicyLink = () => {
   const privacyPolicyURL =
@@ -10,10 +16,10 @@ const PrivacyPolicyLink = () => {
   );
 };
 
-const PrivacyPolicy = () => {
+const PrivacyPolicy = ({navigation}: PrivacyPolicy) => {
   const {t} = useTranslation();
   return (
-    <TouchableOpacity style={Styles.menuItem} onPress={PrivacyPolicyLink}>
+    <TouchableOpacity style={Styles.menuItem} onPress={() => navigation.navigate('PrivacyPolicy')}>
       <Text style={Styles.menuItemText}>{t('privacyPolicy.title')}</Text>
     </TouchableOpacity>
   );

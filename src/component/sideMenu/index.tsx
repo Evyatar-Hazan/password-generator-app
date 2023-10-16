@@ -9,9 +9,10 @@ import {useTranslation} from 'react-i18next';
 interface SideMenuProps {
   isVisible: boolean;
   onClose: () => void;
+  navigation: any;
 }
 
-const SideMenu: React.FC<SideMenuProps> = ({isVisible, onClose}) => {
+const SideMenu: React.FC<SideMenuProps> = ({isVisible, onClose, navigation}) => {
   const {t} = useTranslation();
   return (
     <Modal
@@ -21,7 +22,7 @@ const SideMenu: React.FC<SideMenuProps> = ({isVisible, onClose}) => {
       animationIn="slideInRight"
       animationOut="slideInRight">
       <View style={Styles.modalContent}>
-        <PrivacyPolicy />
+        <PrivacyPolicy navigation={navigation}/>
         <LanguagePicker />
         <Text>{t('privacyPolicy.privacyPolicy')}</Text>
       </View>

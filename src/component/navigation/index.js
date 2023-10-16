@@ -6,7 +6,8 @@ import OutputScreen from '../outputScreen/index';
 import {useTranslation} from 'react-i18next';
 import {Svg, Path} from 'react-native-svg';
 import React, {useState} from 'react';
-import SideMenu from '../sideMenu/index'; // Adjust the path based on your file structure
+import SideMenu from '../sideMenu/index';
+import PrivacyPolicy from '../privacyPolicy';
 
 const Stack = createStackNavigator();
 
@@ -31,6 +32,7 @@ const CustomHeaderButton = ({navigation}) => {
         isVisible={isMenuVisible}
         onClose={toggleMenu}
         onMenuItemPress={toggleMenu}
+        navigation={navigation}
       />
     </>
   );
@@ -42,9 +44,9 @@ const Navigation = () => {
     <NavigationContainer>
       <Stack.Navigator
         initialRouteName="InputScreen"
-        screenOptions={{
-          headerRight: () => <CustomHeaderButton />,
-        }}>
+        screenOptions={({ navigation }) => ({
+          headerRight: () => <CustomHeaderButton navigation={navigation} />,
+        })}>
         <Stack.Screen
           name="InputScreen"
           component={InputScreen}
@@ -57,6 +59,13 @@ const Navigation = () => {
           component={OutputScreen}
           options={{
             title: t('navigation.outputScreen'),
+          }}
+        />
+        <Stack.Screen
+          name="PrivacyPolicy"
+          component={PrivacyPolicy}
+          options={{
+            title: t('privacyPolicy.title'),
           }}
         />
       </Stack.Navigator>
