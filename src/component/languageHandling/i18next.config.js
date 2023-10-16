@@ -1,6 +1,7 @@
 import i18n from 'i18next';
 import {initReactI18next} from 'react-i18next';
 import {en, he} from './translations/index';
+import { I18nManager } from "react-native"
 
 
 const { languageDetectorPlugin } = require("./languageDetectorPlugin");
@@ -22,7 +23,7 @@ i18n
     compatibilityJSON: 'v3',
     resources,
     //language to use if translations in user language are not available
-    fallbackLng: "en",
+    lng: I18nManager.isRTL ? 'he' : 'en',
     interpolation: {
       escapeValue: false, // not needed for react!!
     },

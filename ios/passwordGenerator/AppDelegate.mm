@@ -1,6 +1,7 @@
 #import "AppDelegate.h"
 
 #import <React/RCTBundleURLProvider.h>
+#import "React/RCTI18nUtil.h"
 
 @implementation AppDelegate
 
@@ -21,6 +22,9 @@
 #else
   return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
 #endif
+[[RCTI18nUtil sharedInstance] allowRTL:YES];
+
+return YES
 }
 
 @end

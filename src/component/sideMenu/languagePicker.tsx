@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
-import {Text, TouchableOpacity} from 'react-native';
+import {Text, TouchableOpacity, I18nManager} from 'react-native';
 import Styles from './styles';
 import {useTranslation} from 'react-i18next';
+import RNRestart from 'react-native-restart';
 
 type languageMap = {
   [key: string]: string;
@@ -18,7 +19,10 @@ const LanguagePicker = () => {
   };
 
   const changeLanguage = (language: string) => {
-    i18n.changeLanguage(language);
+    i18n.changeLanguage(language).then(() => {
+      I18nManager.forceRTL(i18n.language === "he")
+      RNRestart.restart()
+    });
     setShowLanguages(false);
   };
 
