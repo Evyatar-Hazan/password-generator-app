@@ -44,7 +44,6 @@ npm start
 npm run android
 ```
 
-
 ---
 
 #### build release apk
@@ -63,6 +62,7 @@ npm run android
 
 
 ---
+
 
 #### build release aab
 
@@ -83,3 +83,8 @@ npm run android
     ./gradlew bundleRelease
 
     ```
+
+---
+
+### sentry
+[sentry](https://evyatarhazan.sentry.io/issues/?project=4506066096685056)
