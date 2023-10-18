@@ -4,19 +4,19 @@ import {useTranslation} from 'react-i18next';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../public';
 
-type PrivacyPolicy = {
-  navigation: StackNavigationProp<RootStackParamList, 'PrivacyPolicy'>;
+type AboutTheApp = {
+  navigation: StackNavigationProp<RootStackParamList, 'AboutTheApp'>;
 };
 
-const PrivacyPolicy = ({navigation}: PrivacyPolicy) => {
+const AboutTheApp = ({navigation}: AboutTheApp) => {
   const {t} = useTranslation();
   return (
     <TouchableOpacity
       style={Styles.menuItem}
-      onPress={() => navigation.navigate('PrivacyPolicy')}>
-      <Text style={Styles.menuItemText}>{t('privacyPolicy.title')}</Text>
+      onPress={() => navigation.navigate('AboutTheApp')}>
+      <Text style={Styles.menuItemText}>{t('aboutTheApp.title')}</Text>
     </TouchableOpacity>
   );
 };
 
-export default PrivacyPolicy;
+export default AboutTheApp;

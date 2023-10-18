@@ -47,6 +47,28 @@
     "linkTitle": "For the source document, please visit our ",
     "linkText": "Privacy Policy"
   },
+  "aboutTheApp": {
+    "title": "About the app",
+    "gettingStarted": "Getting Started:",
+    "enterYourPersonalWordTitle": "1. Enter Your Personal Word:",
+    "enterYourPersonalWordText": "Think of a word or phrase that is personal to you, something only you would know. This word will be the foundation of your password and should be kept secret.",
+    "enterPlatformSpecificWordTitle": "2. Enter Platform-Specific Word:",
+    "enterPlatformSpecificWordText": "Think of a word related to the platform or service for which you need the password. For example, if you're creating a password for your bank, use a word related to banking. This adds an extra layer of security and makes your password unique to each platform.",
+    "exampleUsageTitle": "Example Usage:",
+    "exampleUsageText": "\n- Personal Word: 'Avraham'\n- Platform Word: 'Bank'",
+    "generatedPasswordsTitle": "Generated Passwords:",
+    "generatedPasswordsText": "\n Password Option 1 (Only Numbers - Low Strength): 16473832.\n Password Option 2 (Only Letters - Medium Strength): deffbaed.\n Password Option 3 (Numbers and Letters - Medium Strength): 1d6e4f7f.\n Password Option 4 (Numbers and Upper/Lower Case Letters - High Strength): 1D6e4F7F.\n Password Option 5 (Numbers, Upper/Lower Case Letters, and Special Character - Ultra Strength): !D6e4F7F",
+    "securityTips": "Security Tips:",
+    "keepYourPersonalWordSecretTitle": "- Keep Your Personal Word Secret:",
+    "keepYourPersonalWordSecretText": "Do not share the personal word you use with anyone. It is the key to generating your unique passwords.",
+    "avoidUsingObviousPlatformWordsTitle": "- Avoid Using Obvious Platform Words:",
+    "avoidUsingObviousPlatformWordsText": "Choose platform-specific words that are not easily guessable by others.",
+    "selectThePasswordTitle": "- Select the Password Option that Fits Your Security Needs: ",
+    "selectThePasswordText": "Depending on the sensitivity of the account, choose the generated password option that best aligns with your security requirements.",
+    "importantNoteTitle": "Important Note: ",
+    "importantNoteText": " Your generated passwords are not stored anywhere within Password-Generator. They are generated on-the-fly based on your inputs and are not accessible to anyone, ensuring your security and privacy.",
+    "thanks": "Thank you for choosing Password-Generator! Your online security is our priority. If you have any questions or concerns, feel free to contact our support team."
+  },
   "sideMenu": {
     "language": "language"
   },

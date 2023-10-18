@@ -5,6 +5,7 @@ import PrivacyPolicy from './privacyPolicy';
 import LanguagePicker from './languagePicker';
 import Styles from './styles';
 import {useTranslation} from 'react-i18next';
+import AboutTheApp from './aboutTheApp';
 
 interface SideMenuProps {
   isVisible: boolean;
@@ -12,7 +13,11 @@ interface SideMenuProps {
   navigation: any;
 }
 
-const SideMenu: React.FC<SideMenuProps> = ({isVisible, onClose, navigation}) => {
+const SideMenu: React.FC<SideMenuProps> = ({
+  isVisible,
+  onClose,
+  navigation,
+}) => {
   const {t} = useTranslation();
   return (
     <Modal
@@ -22,7 +27,8 @@ const SideMenu: React.FC<SideMenuProps> = ({isVisible, onClose, navigation}) => 
       animationIn="slideInRight"
       animationOut="slideInRight">
       <View style={Styles.modalContent}>
-        <PrivacyPolicy navigation={navigation}/>
+        <PrivacyPolicy navigation={navigation} />
+        <AboutTheApp navigation={navigation} />
         <LanguagePicker />
         <Text>{t('privacyPolicy.privacyPolicy')}</Text>
       </View>

@@ -8,6 +8,7 @@ import {Svg, Path} from 'react-native-svg';
 import React, {useState} from 'react';
 import SideMenu from '../sideMenu/index';
 import PrivacyPolicy from '../privacyPolicy';
+import AboutTheApp from '../aboutTheApp';
 
 const Stack = createStackNavigator();
 
@@ -44,7 +45,7 @@ const Navigation = () => {
     <NavigationContainer>
       <Stack.Navigator
         initialRouteName="InputScreen"
-        screenOptions={({ navigation }) => ({
+        screenOptions={({navigation}) => ({
           headerRight: () => <CustomHeaderButton navigation={navigation} />,
         })}>
         <Stack.Screen
@@ -66,6 +67,13 @@ const Navigation = () => {
           component={PrivacyPolicy}
           options={{
             title: t('privacyPolicy.title'),
+          }}
+        />
+        <Stack.Screen
+          name="AboutTheApp"
+          component={AboutTheApp}
+          options={{
+            title: t('aboutTheApp.title'),
           }}
         />
       </Stack.Navigator>
