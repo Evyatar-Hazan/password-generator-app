@@ -6,6 +6,7 @@ import LanguagePicker from './languagePicker';
 import Styles from './styles';
 import {useTranslation} from 'react-i18next';
 import AboutTheApp from './aboutTheApp';
+import ShareApp from './shareApp';
 
 interface SideMenuProps {
   isVisible: boolean;
@@ -27,6 +28,7 @@ const SideMenu: React.FC<SideMenuProps> = ({
       animationIn="slideInRight"
       animationOut="slideInRight">
       <View style={Styles.modalContent}>
+        <ShareApp />
         <PrivacyPolicy navigation={navigation} />
         <AboutTheApp navigation={navigation} />
         <LanguagePicker />
