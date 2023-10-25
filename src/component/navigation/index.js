@@ -9,6 +9,7 @@ import React, {useState} from 'react';
 import SideMenu from '../sideMenu/index';
 import PrivacyPolicy from '../privacyPolicy';
 import AboutTheApp from '../aboutTheApp';
+import AboutUs from '../aboutUs';
 
 const Stack = createStackNavigator();
 
@@ -74,6 +75,13 @@ const Navigation = () => {
           component={AboutTheApp}
           options={{
             title: t('aboutTheApp.title'),
+          }}
+        />
+        <Stack.Screen
+          name="AboutUs"
+          component={AboutUs}
+          options={{
+            title: t('aboutUs.title'),
           }}
         />
       </Stack.Navigator>

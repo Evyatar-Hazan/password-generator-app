@@ -69,6 +69,9 @@
     "importantNoteText": " Your generated passwords are not stored anywhere within Password-Generator. They are generated on-the-fly based on your inputs and are not accessible to anyone, ensuring your security and privacy.",
     "thanks": "Thank you for choosing Password-Generator! Your online security is our priority. If you have any questions or concerns, feel free to contact our support team."
   },
+  "aboutUs": {
+    "title":"About Us"
+  },
   "shareApp": {
     "title": "Share App",
     "message": "We invite you to download and use the Password-Generator application:"

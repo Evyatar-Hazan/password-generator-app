@@ -7,6 +7,7 @@ import Styles from './styles';
 import {useTranslation} from 'react-i18next';
 import AboutTheApp from './aboutTheApp';
 import ShareApp from './shareApp';
+import AboutUs from './aboutUs';
 
 interface SideMenuProps {
   isVisible: boolean;
@@ -31,6 +32,7 @@ const SideMenu: React.FC<SideMenuProps> = ({
         <ShareApp />
         <PrivacyPolicy navigation={navigation} />
         <AboutTheApp navigation={navigation} />
+        <AboutUs navigation={navigation} />
         <LanguagePicker />
         <Text>{t('privacyPolicy.privacyPolicy')}</Text>
       </View>

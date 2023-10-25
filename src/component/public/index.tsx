@@ -3,4 +3,5 @@ export type RootStackParamList = {
   OutputScreen: {hashedText: string};
   PrivacyPolicy: undefined;
   AboutTheApp: undefined;
+  AboutUs: undefined;
 };
