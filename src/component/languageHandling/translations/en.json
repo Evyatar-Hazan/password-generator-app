@@ -70,7 +70,13 @@
     "thanks": "Thank you for choosing Password-Generator! Your online security is our priority. If you have any questions or concerns, feel free to contact our support team."
   },
   "aboutUs": {
-    "title":"About Us"
+    "title":"About Us",
+    "text": "The password generator application was built as an open source project that emphasizes security and not saving user data at any stage.",
+    "thinkerTitle": "Thinker: ",
+    "thinkerName": "Mendy Bloy ",
+    "organizedByTitle": "Organized by :",
+    "organizedByName": "Evyatar Hazan ",
+    "linkToGithubTitle": "Link to Github (open source): "
   },
   "shareApp": {
     "title": "Share App",

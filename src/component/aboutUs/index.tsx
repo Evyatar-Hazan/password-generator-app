@@ -1,51 +1,84 @@
 import React from 'react';
-import { View, Text, Image, TouchableOpacity, Linking } from 'react-native';
+import {
+  Text,
+  TouchableOpacity,
+  Linking,
+  ScrollView,
+  StyleSheet,
+} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../navigation/rootStackParamList';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {useTranslation} from 'react-i18next';
 
 type AboutUsProps = {
   navigation: StackNavigationProp<RootStackParamList, 'AboutTheApp'>;
 };
 
+const AboutUs: React.FC<AboutUsProps> = ({navigation}) => {
+  const {t} = useTranslation();
 
+  const thinkerLinkedinURL =
+    'https://www.linkedin.com/in/mendy-bloy-5671b8276?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app';
+  const organizedByLinkedinURL =
+    'https://www.linkedin.com/in/evyatar-hazan-662235210?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app';
+  const githubURL = 'https://github.com/Evyatar-Hazan/password-generator';
 
-const AboutUs: React.FC<AboutUsProps> = ({ navigation }) => {
-  // const { linkedinURL, githubURL } = { 'linkedinURL': 'linkedinURL', 'githubURL': 'githubURL' }
-  // const openLink = (url: string) => {
-  //   Linking.canOpenURL(url).then((supported) => {
-  //     if (supported) {
-  //       Linking.openURL(url);
-  //     } else {
-  //       console.error("Don't know how to open URI: " + url);
-  //     }
-  //   });
-  // };
+  const openLink = (url: string) => {
+    Linking.canOpenURL(url).then(supported => {
+      if (supported) {
+        Linking.openURL(url);
+      } else {
+        console.error("Don't know how to open URI: " + url);
+      }
+    });
+  };
 
   return (
-    <>
-  {/* <View style={{ alignItems: 'center' }}>
-    <Image
-      source={require('./1648206324373.jpeg')}
-      style={{ width: 100, height: 100, borderRadius: 50 }}
-    />
-    <Text>About Us</Text>
-    <Text>
-      Write a brief description about your team or yourself here. You can provide information about your skills,
-      experience, and goals.
-    </Text>
-  </View>
-  <View style={{ flexDirection: 'row', justifyContent: 'space-around', marginTop: 20 }}>
-    <TouchableOpacity onPress={() => openLink(linkedinURL)}>
-      <Icon name="linkedin" size={30} color="#0077b5" />
-    </TouchableOpacity>
-    <TouchableOpacity onPress={() => openLink(githubURL)}>
-      <Icon name="github" size={30} color="#333" />
-    </TouchableOpacity>
-  </View> */}
-  </>
+    <ScrollView style={styles.container}>
+      <Text style={styles.header}>{t('aboutUs.title')}</Text>
+      <Text style={styles.paragraph}>{t('aboutUs.text')}</Text>
 
+      <Text style={styles.paragraph}>
+        <Text style={styles.bold}>{t('aboutUs.thinkerTitle')}</Text>{' '}
+        {t('aboutUs.thinkerName')}
+        <TouchableOpacity onPress={() => openLink(thinkerLinkedinURL)}>
+          <Icon name="linkedin" size={16} color="#0077b5" />
+        </TouchableOpacity>
+      </Text>
+      <Text style={styles.paragraph}>
+        <Text style={styles.bold}>{t('aboutUs.organizedByTitle')}</Text>{' '}
+        {t('aboutUs.organizedByName')}
+        <TouchableOpacity onPress={() => openLink(organizedByLinkedinURL)}>
+          <Icon name="linkedin" size={16} color="#0077b5" />
+        </TouchableOpacity>
+      </Text>
+      <Text style={styles.paragraph}>
+        <Text style={styles.bold}>{t('aboutUs.linkToGithubTitle')}</Text>{' '}
+        <TouchableOpacity onPress={() => openLink(githubURL)}>
+          <Icon name="github" size={16} color="#0077b5" />
+        </TouchableOpacity>
+      </Text>
+    </ScrollView>
   );
 };
 
 export default AboutUs;
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 20,
+  },
+  header: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 10,
+  },
+  paragraph: {
+    marginBottom: 15,
+    fontSize: 16,
+  },
+  bold: {
+    fontWeight: 'bold',
+  },
+});
