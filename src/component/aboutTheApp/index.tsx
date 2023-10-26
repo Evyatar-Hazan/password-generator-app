@@ -1,6 +1,6 @@
 import React from 'react';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {RootStackParamList} from '../public';
+import {RootStackParamList} from '../navigation/rootStackParamList';
 import {Text, ScrollView, StyleSheet} from 'react-native';
 import {useTranslation} from 'react-i18next';
 

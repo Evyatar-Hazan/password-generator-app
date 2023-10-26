@@ -2,7 +2,7 @@ import React from 'react';
 import './component/languageHandling/i18next.config';
 import Navigation from './component/navigation';
 
-const Main = () => {
+const Main: React.FC = () => {
   return <Navigation />;
 };
 

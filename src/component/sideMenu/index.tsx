@@ -13,6 +13,7 @@ interface SideMenuProps {
   isVisible: boolean;
   onClose: () => void;
   navigation: any;
+  onMenuItemPress: () => void;
 }
 
 const SideMenu: React.FC<SideMenuProps> = ({

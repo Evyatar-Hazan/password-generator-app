@@ -1,6 +1,6 @@
 import i18n from 'i18next';
 import {initReactI18next} from 'react-i18next';
-import {en, he} from './translations/index';
+import {en, he} from './translations/index.tsx';
 import { I18nManager } from "react-native"
 
 

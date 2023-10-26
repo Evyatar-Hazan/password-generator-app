@@ -9,7 +9,7 @@ import {
 import {Input, Button} from 'react-native-elements';
 import {getHash} from '../hashHandling/index';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {RootStackParamList} from '../public';
+import {RootStackParamList} from '../navigation/rootStackParamList';
 import {useTranslation} from 'react-i18next';
 
 type HomeScreenProps = {

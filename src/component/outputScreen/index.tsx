@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {View, StyleSheet} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {RootStackParamList} from '../public/index';
+import {RootStackParamList} from '../navigation/rootStackParamList';
 import {RouteProp} from '@react-navigation/native';
 import {passwordGenerator} from '../hashHandling';
 import PasswordButton from './passwordButton';

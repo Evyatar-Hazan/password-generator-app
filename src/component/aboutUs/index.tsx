@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, Linking } from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {RootStackParamList} from '../public';
+import {RootStackParamList} from '../navigation/rootStackParamList';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 type AboutUsProps = {

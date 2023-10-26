@@ -2,7 +2,7 @@ import {Text, TouchableOpacity} from 'react-native';
 import Styles from './styles';
 import {useTranslation} from 'react-i18next';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {RootStackParamList} from '../public';
+import {RootStackParamList} from '../navigation/rootStackParamList';
 
 type AboutUs = {
   navigation: StackNavigationProp<RootStackParamList, 'AboutUs'>;
