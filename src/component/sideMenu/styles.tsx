@@ -1,8 +1,14 @@
 import {StyleSheet} from 'react-native';
 
 const Styles = StyleSheet.create({
+  burgerMenuWrapper: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'flex-start',
+  },
   modal: {
     margin: 0,
+    flex: 1,
   },
   modalContent: {
     width: '60%',
@@ -13,6 +19,12 @@ const Styles = StyleSheet.create({
   menuItem: {
     marginBottom: 20,
     marginLeft: 30,
+    flex: 1,
+    borderBottomWidth: 1,
+    // paddingVertical: 17,
+    // paddingLeft: 11,
+    // borderBottomColor: '#cbd2d9',
+    // color: '#002b36',
   },
   menuItemText: {
     fontSize: 18,
