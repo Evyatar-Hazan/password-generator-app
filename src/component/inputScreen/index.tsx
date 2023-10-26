@@ -37,6 +37,8 @@ const InputScreen = ({navigation}: HomeScreenProps) => {
       console.log('Input 2:', inputValue2);
       const hashedText = getHash(inputValue1, inputValue2);
       navigation.navigate('OutputScreen', {hashedText});
+      setInputValue1('');
+      setInputValue2('');
     }
   };
 
