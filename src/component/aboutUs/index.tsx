@@ -25,13 +25,7 @@ const AboutUs: React.FC<AboutUsProps> = ({navigation}) => {
   const githubURL = 'https://github.com/Evyatar-Hazan/password-generator';
 
   const openLink = (url: string) => {
-    Linking.canOpenURL(url).then(supported => {
-      if (supported) {
-        Linking.openURL(url);
-      } else {
-        console.error("Don't know how to open URI: " + url);
-      }
-    });
+    Linking.openURL(url);
   };
 
   return (

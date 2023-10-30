@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
-import {Text, TouchableOpacity, I18nManager} from 'react-native';
+import {Text, TouchableOpacity, I18nManager, StyleSheet} from 'react-native';
 import Styles from './styles';
 import {useTranslation} from 'react-i18next';
 import RNRestart from 'react-native-restart';
+import {CountryFlag} from 'react-native-flag-creator';
 
 type languageMap = {
   [key: string]: string;
@@ -18,10 +19,15 @@ const LanguagePicker = () => {
     he: 'language.he',
   };
 
+  const languageMapIcon: languageMap = {
+    en: 'US',
+    he: 'il',
+  };
+
   const changeLanguage = (language: string) => {
     i18n.changeLanguage(language).then(() => {
-      I18nManager.forceRTL(i18n.language === "he")
-      RNRestart.restart()
+      I18nManager.forceRTL(i18n.language === 'he');
+      RNRestart.restart();
     });
     setShowLanguages(false);
   };
@@ -31,7 +37,13 @@ const LanguagePicker = () => {
       <TouchableOpacity
         style={Styles.menuItem}
         onPress={() => setShowLanguages(!showLanguages)}>
-        <Text style={Styles.menuItemText}>{t('sideMenu.language')}</Text>
+        <Text>
+          <CountryFlag
+            countryCode={languageMapIcon[i18n.language]}
+            style={styles.countryFlag}
+          />
+          <Text style={Styles.menuItemText}>{t('sideMenu.language')}</Text>
+        </Text>
       </TouchableOpacity>
       {showLanguages &&
         languages.map(language => (
@@ -39,7 +51,15 @@ const LanguagePicker = () => {
             key={language}
             style={Styles.languageButton}
             onPress={() => changeLanguage(language)}>
-            <Text style={Styles.menuItemText}>{t(languageMap[language])}</Text>
+            <Text>
+              <CountryFlag
+                countryCode={languageMapIcon[language]}
+                style={styles.countryFlag}
+              />
+              <Text style={Styles.menuItemText}>
+                {t(languageMap[language])}
+              </Text>
+            </Text>
           </TouchableOpacity>
         ))}
     </>
@@ -47,3 +67,12 @@ const LanguagePicker = () => {
 };
 
 export default LanguagePicker;
+
+const styles = StyleSheet.create({
+  countryFlag: {
+    height: 18,
+    width: 18,
+    borderRadius: 20,
+    backgroundColor: 'gray',
+  },
+});
