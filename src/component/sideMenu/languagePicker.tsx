@@ -26,6 +26,7 @@ const LanguagePicker = () => {
 
   const changeLanguage = (language: string) => {
     i18n.changeLanguage(language).then(() => {
+      I18nManager.allowRTL(i18n.language === 'he');
       I18nManager.forceRTL(i18n.language === 'he');
       RNRestart.restart();
     });
