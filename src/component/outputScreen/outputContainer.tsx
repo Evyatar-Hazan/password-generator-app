@@ -4,13 +4,13 @@ import {
   Text,
   StyleSheet,
   ScrollView,
-  ToastAndroid,
   TouchableOpacity,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Clipboard from '@react-native-community/clipboard';
 import {Svg, Path} from 'react-native-svg';
 import {useTranslation} from 'react-i18next';
+import CustomToast from '../customToast';
 
 type GeneratedPasswords = {
   [key: string]: string;
@@ -61,10 +61,12 @@ const OutputContainer = ({
     passwordType: string,
   ) => {
     Clipboard.setString(generatedPasswords[passwordType]);
-    ToastAndroid.show(
-      `Copied ${mapGeneratedPasswords[passwordType].label} to clipboard`,
-      ToastAndroid.SHORT,
-    );
+    const password = mapGeneratedPasswords[passwordType].label;
+    CustomToast({
+      type: 'info',
+      title: t('outputScreen.copyPasswordTitle'),
+      text: t('outputScreen.copyPasswordText', {password: password}),
+    });
   };
   return (
     <ScrollView style={styles.outputContainer}>

@@ -16,7 +16,9 @@
     "veryHigh": "Very high",
     "label4": "4",
     "label8": "8",
-    "label12": "12"
+    "label12": "12",
+    "copyPasswordTitle": "Copy password",
+    "copyPasswordText": "Copied, {{password}} to clipboard."
   },
   "navigation": {
     "inputScreen": "Input Screen",

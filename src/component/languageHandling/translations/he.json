@@ -16,7 +16,9 @@
     "veryHigh": "מאוד גבוה",
     "label4": "4",
     "label8": "8",
-    "label12": "12"
+    "label12": "12",
+    "copyPasswordTitle": "העתקת סיסמה",
+    "copyPasswordText": "הועתקה ללוח סיסמת {{password}}."
   },
   "navigation": {
     "inputScreen": "מסך הקלט",
