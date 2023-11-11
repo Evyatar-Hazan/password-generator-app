@@ -10,6 +10,7 @@ import ShareApp from './shareApp';
 import AboutUs from './aboutUs';
 import {I18nManager} from 'react-native';
 import appLogo from './app_logo.png';
+import {ScrollView} from 'react-native-gesture-handler';
 
 interface SideMenuProps {
   isVisible: boolean;
@@ -40,11 +41,13 @@ const SideMenu: React.FC<SideMenuProps> = ({
         <TouchableOpacity style={Styles.logoImageContent}>
           <Image source={appLogo} style={Styles.logoImage} />
         </TouchableOpacity>
-        <ShareApp />
-        <PrivacyPolicy navigation={navigation} />
-        <AboutTheApp navigation={navigation} />
-        <AboutUs navigation={navigation} />
-        <LanguagePicker />
+        <ScrollView>
+          <ShareApp />
+          <PrivacyPolicy navigation={navigation} />
+          <AboutTheApp navigation={navigation} />
+          <AboutUs navigation={navigation} />
+          <LanguagePicker />
+        </ScrollView>
         <TouchableOpacity style={Styles.privacyPolicy}>
           <Text>{t('privacyPolicy.privacyPolicy')}</Text>
         </TouchableOpacity>
