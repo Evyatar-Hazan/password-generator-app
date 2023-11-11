@@ -46,8 +46,6 @@ const Styles = StyleSheet.create({
     bottom: 0,
     left: 30,
     right: 30,
-    paddingVertical: 17,
-    paddingLeft: 11,
     borderBottomColor: '#cbd2d9',
   },
   menuItemText: {

@@ -1,5 +1,12 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, Dimensions, Image, ScrollView} from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Dimensions,
+  Image,
+  ScrollView,
+} from 'react-native';
 import Modal from 'react-native-modal';
 import PrivacyPolicy from './privacyPolicy';
 import LanguagePicker from './languagePicker';
@@ -37,19 +44,20 @@ const SideMenu: React.FC<SideMenuProps> = ({
       avoidKeyboard={true}
       deviceHeight={height + 120}>
       <View style={Styles.modalContent}>
-        <TouchableOpacity style={Styles.logoImageContent}>
-          <Image source={appLogo} style={Styles.logoImage} />
-        </TouchableOpacity>
         <ScrollView>
+          <TouchableOpacity style={Styles.logoImageContent}>
+            <Image source={appLogo} style={Styles.logoImage} />
+          </TouchableOpacity>
           <ShareApp />
           <PrivacyPolicy navigation={navigation} />
           <AboutTheApp navigation={navigation} />
           <AboutUs navigation={navigation} />
           <LanguagePicker />
+          <Text>{'\n'}</Text>
+          <TouchableOpacity style={Styles.privacyPolicy}>
+            <Text>{t('privacyPolicy.privacyPolicy')}</Text>
+          </TouchableOpacity>
         </ScrollView>
-        <TouchableOpacity style={Styles.privacyPolicy}>
-          <Text>{t('privacyPolicy.privacyPolicy')}</Text>
-        </TouchableOpacity>
       </View>
     </Modal>
   );
