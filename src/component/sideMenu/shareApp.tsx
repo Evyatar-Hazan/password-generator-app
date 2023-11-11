@@ -67,6 +67,7 @@ const ShareApp = () => {
       onPress={() => openSourceDocument()}>
       <Text>
         <ShareIcon />
+        <Text>{'  '}</Text>
         <Text style={Styles.menuItemText}>{t('shareApp.title')}</Text>
       </Text>
     </TouchableOpacity>

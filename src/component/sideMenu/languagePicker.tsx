@@ -43,6 +43,7 @@ const LanguagePicker = () => {
             countryCode={languageMapIcon[i18n.language]}
             style={styles.countryFlag}
           />
+          <Text>{'  '}</Text>
           <Text style={Styles.menuItemText}>{t('sideMenu.language')}</Text>
         </Text>
       </TouchableOpacity>
@@ -57,6 +58,7 @@ const LanguagePicker = () => {
                 countryCode={languageMapIcon[language]}
                 style={styles.countryFlag}
               />
+              <Text>{'  '}</Text>
               <Text style={Styles.menuItemText}>
                 {t(languageMap[language])}
               </Text>

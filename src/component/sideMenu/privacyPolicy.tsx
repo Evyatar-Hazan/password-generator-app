@@ -51,6 +51,7 @@ const PrivacyPolicy = ({navigation}: PrivacyPolicy) => {
       onPress={() => navigation.navigate('PrivacyPolicy')}>
       <Text>
         <PrivacyPolicyIcon />
+        <Text>{'  '}</Text>
         <Text style={Styles.menuItemText}>{t('privacyPolicy.title')}</Text>
       </Text>
     </TouchableOpacity>

@@ -47,6 +47,7 @@ const AboutUs = ({navigation}: AboutUs) => {
       onPress={() => navigation.navigate('AboutUs')}>
       <Text>
         <AboutUsIcon />
+        <Text>{'  '}</Text>
         <Text style={Styles.menuItemText}>{t('aboutUs.title')}</Text>
       </Text>
     </TouchableOpacity>
