@@ -31,15 +31,14 @@ const SideMenu: React.FC<SideMenuProps> = ({
   navigation,
 }) => {
   const {t} = useTranslation();
-  const isLtr = I18nManager.isRTL ? 'he' : 'en';
   const {height} = Dimensions.get('window');
   return (
     <Modal
       style={{margin: 0, flex: 1}}
       isVisible={isVisible}
       onBackdropPress={onClose}
-      animationIn={isLtr ? 'slideInLeft' : 'slideInRight'}
-      animationOut={isLtr ? 'slideOutLeft' : 'slideOutRight'}
+      animationIn={'slideInRight'}
+      animationOut={'slideOutRight'}
       backdropOpacity={0.4}
       avoidKeyboard={true}
       deviceHeight={height + 120}>
@@ -53,7 +52,7 @@ const SideMenu: React.FC<SideMenuProps> = ({
           <AboutTheApp navigation={navigation} />
           <AboutUs navigation={navigation} />
           <LanguagePicker />
-          <Text>{'\n'}</Text>
+          <Text>{'\n\n\n'}</Text>
           <TouchableOpacity style={Styles.privacyPolicy}>
             <Text>{t('privacyPolicy.privacyPolicy')}</Text>
           </TouchableOpacity>
