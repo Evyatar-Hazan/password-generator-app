@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, Dimensions, Image} from 'react-native';
+import {View, Text, TouchableOpacity, Dimensions, Image, ScrollView} from 'react-native';
 import Modal from 'react-native-modal';
 import PrivacyPolicy from './privacyPolicy';
 import LanguagePicker from './languagePicker';
@@ -10,7 +10,6 @@ import ShareApp from './shareApp';
 import AboutUs from './aboutUs';
 import {I18nManager} from 'react-native';
 import appLogo from './app_logo.png';
-import {ScrollView} from 'react-native-gesture-handler';
 
 interface SideMenuProps {
   isVisible: boolean;
