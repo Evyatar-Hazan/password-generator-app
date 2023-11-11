@@ -1,6 +1,22 @@
 import {StyleSheet} from 'react-native';
 
 const Styles = StyleSheet.create({
+  logoImageContent: {
+    alignItems: 'center',
+    marginLeft: 30,
+    marginRight: 30,
+    borderBottomWidth: 1,
+    borderBottomColor: '#cbd2d9',
+    
+  },
+  logoImage: {
+    margin: 60,
+    marginTop: 0,
+    width: 150, // Adjust the width as needed
+    height: 150, // Adjust the height as needed
+    borderRadius: 100, // Set to half of width/height to make it round
+    // resizeMode: 'cover', // or 'contain' based on your design preferences
+  },
   burgerMenuWrapper: {
     flex: 1,
     flexDirection: 'row',
@@ -11,8 +27,8 @@ const Styles = StyleSheet.create({
     flex: 1,
   },
   modalContent: {
-    // width: '60%',
     height: '100%',
+    width: '60%',
     backgroundColor: '#ffffff',
     paddingTop: 60,
   },

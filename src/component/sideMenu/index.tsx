@@ -1,10 +1,5 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  Dimensions,
-} from 'react-native';
+import {View, Text, TouchableOpacity, Dimensions, Image} from 'react-native';
 import Modal from 'react-native-modal';
 import PrivacyPolicy from './privacyPolicy';
 import LanguagePicker from './languagePicker';
@@ -14,6 +9,7 @@ import AboutTheApp from './aboutTheApp';
 import ShareApp from './shareApp';
 import AboutUs from './aboutUs';
 import {I18nManager} from 'react-native';
+import appLogo from './app_logo.png';
 
 interface SideMenuProps {
   isVisible: boolean;
@@ -41,14 +37,16 @@ const SideMenu: React.FC<SideMenuProps> = ({
       avoidKeyboard={true}
       deviceHeight={height + 120}>
       <View style={Styles.modalContent}>
+        <TouchableOpacity style={Styles.logoImageContent}>
+          <Image source={appLogo} style={Styles.logoImage} />
+        </TouchableOpacity>
         <ShareApp />
         <PrivacyPolicy navigation={navigation} />
         <AboutTheApp navigation={navigation} />
         <AboutUs navigation={navigation} />
         <LanguagePicker />
-        <TouchableOpacity
-          style={Styles.privacyPolicy}>
-            <Text>{t('privacyPolicy.privacyPolicy')}</Text>
+        <TouchableOpacity style={Styles.privacyPolicy}>
+          <Text>{t('privacyPolicy.privacyPolicy')}</Text>
         </TouchableOpacity>
       </View>
     </Modal>
