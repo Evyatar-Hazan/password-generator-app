@@ -3,6 +3,7 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../navigation/rootStackParamList';
 import {Text, ScrollView, StyleSheet} from 'react-native';
 import {useTranslation} from 'react-i18next';
+import theme from '../../style';
 
 type AboutTheAppProps = {
   navigation: StackNavigationProp<RootStackParamList, 'AboutTheApp'>;
@@ -75,13 +76,16 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 10,
+    color: theme.colors.text,
   },
   paragraph: {
     marginBottom: 15,
     fontSize: 16,
+    color: theme.colors.text,
   },
   bold: {
     fontWeight: 'bold',
+    color: theme.colors.text,
   },
 });
 

@@ -5,6 +5,7 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../navigation/rootStackParamList';
 import * as React from 'react';
 import Svg, {Defs, Path, G, Mask, Use} from 'react-native-svg';
+import theme from '../../style';
 
 const PrivacyPolicyIcon = () => {
   return (
@@ -27,10 +28,10 @@ const PrivacyPolicyIcon = () => {
         fill="none"
         fillRule="evenodd">
         <G transform="translate(25 18)">
-          <Mask id="c" fill="#fff">
+          <Mask id="c" fill={theme.colors.white}>
             <Use xlinkHref="#b" />
           </Mask>
-          <G mask="url(#c)" fill={'black'}>
+          <G mask="url(#c)" fill={theme.colors.black}>
             <Path transform="translate(-2 -2)" d="M0 0H24V24H0z" />
           </G>
         </G>

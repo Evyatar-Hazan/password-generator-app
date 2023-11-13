@@ -1,4 +1,5 @@
-import { BaseToastProps, BaseToast} from 'react-native-toast-message';
+import {BaseToastProps, BaseToast} from 'react-native-toast-message';
+import theme from '../../style';
 
 interface ToastConfigProps extends BaseToastProps {
   style?: object;
@@ -6,12 +7,15 @@ interface ToastConfigProps extends BaseToastProps {
   text1Style?: object;
 }
 
-const ToastConfig: { [key: string]: (props: ToastConfigProps) => JSX.Element } = {
+const ToastConfig: {[key: string]: (props: ToastConfigProps) => JSX.Element} = {
   success: (props: ToastConfigProps) => (
     <BaseToast
       {...props}
-      style={{ borderLeftColor: '#339900', ...props.style }}
-      contentContainerStyle={{ paddingHorizontal: 15, ...props.contentContainerStyle }}
+      style={{borderLeftColor: theme.colors.success, ...props.style}}
+      contentContainerStyle={{
+        paddingHorizontal: 15,
+        ...props.contentContainerStyle,
+      }}
       text1Style={{
         fontSize: 15,
         fontWeight: '400',
@@ -22,8 +26,11 @@ const ToastConfig: { [key: string]: (props: ToastConfigProps) => JSX.Element } =
   error: (props: ToastConfigProps) => (
     <BaseToast
       {...props}
-      style={{ borderLeftColor: '#cc3300', ...props.style }}
-      contentContainerStyle={{ paddingHorizontal: 15, ...props.contentContainerStyle }}
+      style={{borderLeftColor: theme.colors.error, ...props.style}}
+      contentContainerStyle={{
+        paddingHorizontal: 15,
+        ...props.contentContainerStyle,
+      }}
       text1Style={{
         fontSize: 15,
         fontWeight: '400',
@@ -34,8 +41,11 @@ const ToastConfig: { [key: string]: (props: ToastConfigProps) => JSX.Element } =
   info: (props: ToastConfigProps) => (
     <BaseToast
       {...props}
-      style={{ borderLeftColor: '#ffcc00', ...props.style }}
-      contentContainerStyle={{ paddingHorizontal: 15, ...props.contentContainerStyle }}
+      style={{borderLeftColor: theme.colors.info, ...props.style}}
+      contentContainerStyle={{
+        paddingHorizontal: 15,
+        ...props.contentContainerStyle,
+      }}
       text1Style={{
         fontSize: 15,
         fontWeight: '400',

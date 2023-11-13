@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import theme from '../../style';
 
 const Styles = StyleSheet.create({
   logoImageContent: {
@@ -7,15 +8,13 @@ const Styles = StyleSheet.create({
     marginRight: 30,
     borderBottomWidth: 1,
     borderBottomColor: '#cbd2d9',
-    
   },
   logoImage: {
     margin: 60,
     marginTop: 0,
-    width: 150, // Adjust the width as needed
-    height: 150, // Adjust the height as needed
-    borderRadius: 100, // Set to half of width/height to make it round
-    // resizeMode: 'cover', // or 'contain' based on your design preferences
+    width: 150,
+    height: 150,
+    borderRadius: 100,
   },
   burgerMenuWrapper: {
     flex: 1,
@@ -29,7 +28,7 @@ const Styles = StyleSheet.create({
   modalContent: {
     height: '100%',
     width: '60%',
-    backgroundColor: '#ffffff',
+    backgroundColor: theme.colors.background,
     paddingTop: 60,
   },
   menuItem: {
@@ -39,18 +38,18 @@ const Styles = StyleSheet.create({
     borderBottomWidth: 1,
     paddingVertical: 17,
     paddingLeft: 11,
-    borderBottomColor: '#cbd2d9',
+    borderBottomColor: theme.colors.grey,
   },
   privacyPolicy: {
     position: 'absolute',
     bottom: 0,
     left: 30,
     right: 30,
-    borderBottomColor: '#cbd2d9',
+    borderBottomColor: theme.colors.grey,
   },
   menuItemText: {
     fontSize: 18,
-    color: '#333333',
+    color: theme.colors.text,
   },
   languagesContainer: {
     flexDirection: 'row',
@@ -62,7 +61,7 @@ const Styles = StyleSheet.create({
     marginLeft: 45,
   },
   languageButtonText: {
-    color: '#ffffff',
+    color: theme.colors.text,
   },
 });
 

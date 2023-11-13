@@ -4,6 +4,7 @@ import Styles from './styles';
 import {useTranslation} from 'react-i18next';
 import RNRestart from 'react-native-restart';
 import {CountryFlag} from 'react-native-flag-creator';
+import theme from '../../style';
 
 type languageMap = {
   [key: string]: string;
@@ -76,6 +77,6 @@ const styles = StyleSheet.create({
     height: 18,
     width: 18,
     borderRadius: 20,
-    backgroundColor: 'gray',
+    backgroundColor: theme.colors.grey,
   },
 });

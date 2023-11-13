@@ -5,6 +5,7 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../navigation/rootStackParamList';
 import * as React from 'react';
 import Svg, {Defs, Path, G, Mask, Use} from 'react-native-svg';
+import theme from '../../style';
 
 const AboutTheAppIcon = () => {
   return (
@@ -27,10 +28,10 @@ const AboutTheAppIcon = () => {
         fill="none"
         fillRule="evenodd">
         <G transform="translate(2 14)">
-          <Mask id="c" fill="#fff">
+          <Mask id="c" fill={theme.colors.white}>
             <Use xlinkHref="#b" />
           </Mask>
-          <G mask="url(#c)" fill="#002B36">
+          <G mask="url(#c)" fill={theme.colors.black}>
             <Path transform="translate(-2 -1)" d="M0 0H20V20H0z" />
           </G>
         </G>

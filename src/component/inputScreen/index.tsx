@@ -11,6 +11,7 @@ import {getHash} from '../hashHandling/index';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../navigation/rootStackParamList';
 import {useTranslation} from 'react-i18next';
+import theme from '../../style';
 
 type HomeScreenProps = {
   navigation: StackNavigationProp<RootStackParamList, 'InputScreen'>;
@@ -33,8 +34,6 @@ const InputScreen = ({navigation}: HomeScreenProps) => {
 
   const handleSave = () => {
     if (!isSaveDisabled) {
-      console.log('Input 1:', inputValue1);
-      console.log('Input 2:', inputValue2);
       const hashedText = getHash(inputValue1, inputValue2);
       navigation.navigate('OutputScreen', {hashedText});
       setInputValue1('');
@@ -54,7 +53,7 @@ const InputScreen = ({navigation}: HomeScreenProps) => {
         <View style={styles.inputContainer}>
           <Input
             placeholder={t('inputScreen.textFirst')}
-            placeholderTextColor="#aaa"
+            placeholderTextColor={theme.colors.grey}
             inputStyle={styles.input}
             containerStyle={styles.inputWrapper}
             inputContainerStyle={styles.inputContainerStyle}
@@ -64,7 +63,7 @@ const InputScreen = ({navigation}: HomeScreenProps) => {
           />
           <Input
             placeholder={t('inputScreen.secondText')}
-            placeholderTextColor="#aaa"
+            placeholderTextColor={theme.colors.grey}
             inputStyle={styles.input}
             containerStyle={styles.inputWrapper}
             inputContainerStyle={styles.inputContainerStyle}
@@ -89,7 +88,7 @@ const InputScreen = ({navigation}: HomeScreenProps) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#f0f0f0',
+    backgroundColor: theme.colors.background,
   },
   inputContainerStyle: {
     borderBottomWidth: 0,
@@ -112,16 +111,17 @@ const styles = StyleSheet.create({
     fontSize: 16,
     borderRadius: 25,
     paddingHorizontal: 18,
-    backgroundColor: 'white',
+    backgroundColor: theme.colors.white,
     elevation: 3,
+    color: theme.colors.text,
   },
   saveButton: {
     borderRadius: 25,
     marginTop: 10,
-    backgroundColor: '#2ecc71',
+    backgroundColor: theme.colors.green,
   },
   saveButtonText: {
-    color: 'white',
+    color: theme.colors.white,
     fontWeight: 'bold',
     fontSize: 16,
   },

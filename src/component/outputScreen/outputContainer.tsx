@@ -11,6 +11,7 @@ import Clipboard from '@react-native-community/clipboard';
 import {Svg, Path} from 'react-native-svg';
 import {useTranslation} from 'react-i18next';
 import CustomToast from '../customToast';
+import theme from '../../style';
 
 type GeneratedPasswords = {
   [key: string]: string;
@@ -31,28 +32,28 @@ const OutputContainer = ({
   > = {
     numbersPassword: {
       label: t('outputScreen.numbersPassword'),
-      securityLevel: t('outputScreen.low'),
-      color: 'red',
+      securityLevel: t('outputScreen.weak'),
+      color: theme.colors.securePassword.weak,
     },
     lettersPassword: {
       label: t('outputScreen.lettersPassword'),
       securityLevel: t('outputScreen.medium'),
-      color: 'orange',
+      color: theme.colors.securePassword.medium,
     },
     numbersAndLettersPassword: {
       label: t('outputScreen.numbersAndLettersPassword'),
-      securityLevel: t('outputScreen.medium'),
-      color: 'orange',
+      securityLevel: t('outputScreen.strong'),
+      color: theme.colors.securePassword.strong,
     },
     upperCasePassword: {
       label: t('outputScreen.upperCasePassword'),
-      securityLevel: t('outputScreen.high'),
-      color: 'green',
+      securityLevel: t('outputScreen.veryStrong'),
+      color: theme.colors.securePassword.veryStrong,
     },
     transformToSign: {
       label: t('outputScreen.transformToSign'),
-      securityLevel: t('outputScreen.veryHigh'),
-      color: 'blue',
+      securityLevel: t('outputScreen.superStrong'),
+      color: theme.colors.securePassword.superStrong,
     },
   };
 
@@ -98,11 +99,11 @@ const OutputContainer = ({
                 style={styles.copyButton}>
                 <Path
                   d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"
-                  fill="black"
+                  fill={theme.colors.black}
                 />
                 <Path
                   d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"
-                  fill="black"
+                  fill={theme.colors.black}
                 />
               </Svg>
             </View>
@@ -119,16 +120,17 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginLeft: 100,
     borderWidth: 2,
-    borderColor: 'black',
+    borderColor: theme.colors.black,
   },
   copyButtonText: {
     fontSize: 16,
-    color: 'white',
+    color: theme.colors.white,
   },
   output: {
     fontSize: 18,
     flex: 1,
     textAlign: 'left',
+    color: theme.colors.text,
   },
   outputRow: {
     flexDirection: 'row',
@@ -136,7 +138,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   outputFrame: {
-    backgroundColor: 'white',
+    backgroundColor: theme.colors.greyAlpha,
     padding: 16,
     borderRadius: 8,
     marginBottom: 16,
@@ -146,6 +148,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 8,
     marginLeft: 10,
+    color: theme.colors.text,
   },
   securityLevelIndicator: {
     flexDirection: 'row',

@@ -3,9 +3,7 @@ import CryptoJS from 'crypto-js';
 
 export const getHash = (text1, text2) => {
   const textToHash = text1 + text2;
-  const hashedText = CryptoJS.SHA256(textToHash).toString();
-  console.log('Hashed text:', hashedText);
-  return hashedText;
+  return CryptoJS.SHA256(textToHash).toString();
 };
 
 export const getNumbersPassword = (hash, numberCharacters) => {

@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {useTranslation} from 'react-i18next';
+import theme from '../../style';
 
 type PrivacyPolicyProps = {
   navigation: StackNavigationProp<RootStackParamList, 'PrivacyPolicy'>;
@@ -97,24 +98,28 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 10,
+    color: theme.colors.text,
   },
   date: {
     marginBottom: 10,
+    color: theme.colors.text,
   },
   paragraph: {
     marginBottom: 15,
     fontSize: 16,
+    color: theme.colors.text,
   },
   bold: {
     fontWeight: 'bold',
+    color: theme.colors.text,
   },
   email: {
     textDecorationLine: 'underline',
-    color: 'blue',
+    color: theme.colors.mainBlue,
   },
   linkText: {
-    color: 'blue',
     textDecorationLine: 'underline',
+    color: theme.colors.mainBlue,
   },
 });
 

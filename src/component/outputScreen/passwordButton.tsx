@@ -1,6 +1,7 @@
 import React from 'react';
 import {TouchableOpacity, Text, StyleSheet} from 'react-native';
 import {useTranslation} from 'react-i18next';
+import theme from '../../style';
 
 type levelMap = {
   [key: string]: string;
@@ -39,7 +40,7 @@ const PasswordButton = ({
 const styles = StyleSheet.create({
   squareButton: {
     backgroundColor: 'transparent',
-    borderColor: '#28a745',
+    borderColor: theme.colors.green,
     borderWidth: 2,
     width: 100,
     height: 40,
@@ -48,14 +49,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   activeButton: {
-    backgroundColor: '#28a745',
+    backgroundColor: theme.colors.green,
   },
   buttonLabel: {
     fontSize: 20,
-    color: '#28a745',
+    color: theme.colors.text,
   },
   activeButtonLabel: {
-    color: 'white',
+    color: theme.colors.white,
   },
 });
 
