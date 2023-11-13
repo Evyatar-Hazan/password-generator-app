@@ -85,8 +85,8 @@ const OutputContainer = ({
           <LinearGradient
             style={styles.outputFrame}
             colors={[mapGeneratedPasswords[passwordType].color, 'transparent']}
-            start={{x: 0, y: 0}}
-            end={{x: 1, y: 0}}>
+            start={{x: 1, y: 0}}
+            end={{x: 0, y: 0}}>
             <View style={styles.outputRow}>
               <Text style={styles.output}>
                 {generatedPasswords[passwordType]}

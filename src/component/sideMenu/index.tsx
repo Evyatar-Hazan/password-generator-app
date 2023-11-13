@@ -15,7 +15,6 @@ import {useTranslation} from 'react-i18next';
 import AboutTheApp from './aboutTheApp';
 import ShareApp from './shareApp';
 import AboutUs from './aboutUs';
-import {I18nManager} from 'react-native';
 import appLogo from './app_logo.png';
 
 interface SideMenuProps {
