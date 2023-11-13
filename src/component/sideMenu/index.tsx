@@ -53,7 +53,7 @@ const SideMenu: React.FC<SideMenuProps> = ({
           <LanguagePicker />
           <Text>{'\n\n\n'}</Text>
           <TouchableOpacity style={Styles.privacyPolicy}>
-            <Text>{t('privacyPolicy.privacyPolicy')}</Text>
+            <Text style={Styles.privacyPolicyText}>{t('privacyPolicy.privacyPolicy')}</Text>
           </TouchableOpacity>
         </ScrollView>
       </View>
