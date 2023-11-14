@@ -16,6 +16,7 @@ import AboutTheApp from './aboutTheApp';
 import ShareApp from './shareApp';
 import AboutUs from './aboutUs';
 import appLogo from './app_logo.png';
+import DarkMode from './darkMode';
 
 interface SideMenuProps {
   isVisible: boolean;
@@ -31,6 +32,7 @@ const SideMenu: React.FC<SideMenuProps> = ({
 }) => {
   const {t} = useTranslation();
   const {height} = Dimensions.get('window');
+
   return (
     <Modal
       style={{margin: 0, flex: 1}}
@@ -51,9 +53,12 @@ const SideMenu: React.FC<SideMenuProps> = ({
           <AboutTheApp navigation={navigation} />
           <AboutUs navigation={navigation} />
           <LanguagePicker />
+          <DarkMode />
           <Text>{'\n\n\n'}</Text>
           <TouchableOpacity style={Styles.privacyPolicy}>
-            <Text style={Styles.privacyPolicyText}>{t('privacyPolicy.privacyPolicy')}</Text>
+            <Text style={Styles.privacyPolicyText}>
+              {t('privacyPolicy.privacyPolicy')}
+            </Text>
           </TouchableOpacity>
         </ScrollView>
       </View>

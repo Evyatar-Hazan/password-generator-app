@@ -48,7 +48,7 @@ const Styles = StyleSheet.create({
     borderBottomColor: theme.colors.grey,
   },
   privacyPolicyText: {
-    color: theme.colors.text
+    color: theme.colors.text,
   },
   menuItemText: {
     fontSize: 18,

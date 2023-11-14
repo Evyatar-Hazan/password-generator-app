@@ -86,7 +86,8 @@
     "message": "We invite you to download and use the Password-Generator application:"
   },
   "sideMenu": {
-    "language": "Language"
+    "language": "Language",
+    "darkMode": "Dark Mode"
   },
   "language": {
     "en": "English",
