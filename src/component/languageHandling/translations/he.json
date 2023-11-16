@@ -1,5 +1,5 @@
 {
-  "inputScreen": {
+  "homeScreen": {
     "createPassword": "יצירת סיסמא",
     "textFirst": "הקלד מילה ראשונה...",
     "secondText": "הקלד מילה שנייה..."
@@ -22,7 +22,7 @@
     "copyPasswordText": "הועתקה ללוח סיסמת {{password}}."
   },
   "navigation": {
-    "inputScreen": "מסך הקלט",
+    "homeScreen": "מסך הבית",
     "outputScreen": "מסך הפלט"
   },
   "privacyPolicy": {

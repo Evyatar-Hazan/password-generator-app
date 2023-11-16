@@ -1,5 +1,5 @@
 export type RootStackParamList = {
-  InputScreen: undefined;
+  HomeScreen: undefined;
   OutputScreen: {hashedText: string};
   PrivacyPolicy: undefined;
   AboutTheApp: undefined;

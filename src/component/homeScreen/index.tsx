@@ -14,10 +14,10 @@ import {useTranslation} from 'react-i18next';
 import theme from '../../style';
 
 type HomeScreenProps = {
-  navigation: StackNavigationProp<RootStackParamList, 'InputScreen'>;
+  navigation: StackNavigationProp<RootStackParamList, 'HomeScreen'>;
 };
 
-const InputScreen = ({navigation}: HomeScreenProps) => {
+const HomeScreen = ({navigation}: HomeScreenProps) => {
   const {t} = useTranslation();
   const [inputValue1, setInputValue1] = useState('');
   const [inputValue2, setInputValue2] = useState('');
@@ -52,7 +52,7 @@ const InputScreen = ({navigation}: HomeScreenProps) => {
         keyboardShouldPersistTaps="handled">
         <View style={styles.inputContainer}>
           <Input
-            placeholder={t('inputScreen.textFirst')}
+            placeholder={t('homeScreen.textFirst')}
             placeholderTextColor={theme.colors.grey}
             inputStyle={styles.input}
             containerStyle={styles.inputWrapper}
@@ -62,7 +62,7 @@ const InputScreen = ({navigation}: HomeScreenProps) => {
             value={inputValue1}
           />
           <Input
-            placeholder={t('inputScreen.secondText')}
+            placeholder={t('homeScreen.secondText')}
             placeholderTextColor={theme.colors.grey}
             inputStyle={styles.input}
             containerStyle={styles.inputWrapper}
@@ -72,7 +72,7 @@ const InputScreen = ({navigation}: HomeScreenProps) => {
             value={inputValue2}
           />
           <Button
-            title={t('inputScreen.createPassword')}
+            title={t('homeScreen.createPassword')}
             type="solid"
             onPress={handleSave}
             disabled={isSaveDisabled}
@@ -127,4 +127,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default InputScreen;
+export default HomeScreen;

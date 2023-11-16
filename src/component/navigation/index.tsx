@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {TouchableOpacity} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
-import InputScreen from '../inputScreen/index';
+import HomeScreen from '../homeScreen/index';
 import OutputScreen from '../outputScreen/index';
 import {useTranslation} from 'react-i18next';
 import {Svg, Path} from 'react-native-svg';
@@ -52,15 +52,15 @@ const Navigation: React.FC = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="InputScreen"
+        initialRouteName="HomeScreen"
         screenOptions={({navigation}) => ({
           headerRight: () => <CustomHeaderButton navigation={navigation} />,
         })}>
         <Stack.Screen
-          name="InputScreen"
-          component={InputScreen}
+          name="HomeScreen"
+          component={HomeScreen}
           options={{
-            title: t('navigation.inputScreen'),
+            title: t('navigation.homeScreen'),
           }}
         />
         <Stack.Screen
