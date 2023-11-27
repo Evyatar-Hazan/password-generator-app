@@ -9,7 +9,7 @@
     "start": "react-native start",
     "test": "jest",
     "release-apk": "cd android/ && ./gradlew app:assembleRelease && cd ..",
-    "release-abb": "cd android/ && ./gradlew bundleRelease && cd ..",
+    "release-aab": "cd android/ && ./gradlew bundleRelease && cd ..",
     "clean": "cd android/ && ./gradlew clean && cd .."
   },
   "dependencies": {
