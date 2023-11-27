@@ -10,7 +10,7 @@ import SideMenu from '../sideMenu/index';
 import PrivacyPolicy from '../privacyPolicy';
 import AboutTheApp from '../aboutTheApp';
 import AboutUs from '../aboutUs';
-import theme from '../../style';
+import {themeMode} from '../../style';
 
 const Stack = createStackNavigator();
 
@@ -32,7 +32,7 @@ const CustomHeaderButton: React.FC<CustomHeaderButtonProps> = ({
       <TouchableOpacity style={{marginRight: 15}} onPress={toggleMenu}>
         <Svg width={24} height={24} viewBox="0 0 24 24">
           <Path
-            fill={theme.colors.black}
+            fill={themeMode('black')}
             d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"
           />
         </Svg>
@@ -54,6 +54,13 @@ const Navigation: React.FC = () => {
       <Stack.Navigator
         initialRouteName="HomeScreen"
         screenOptions={({navigation}) => ({
+          headerStyle: {
+            backgroundColor: themeMode('backgroundHeader'),
+          },
+          headerTintColor: themeMode('text'),
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
           headerRight: () => <CustomHeaderButton navigation={navigation} />,
         })}>
         <Stack.Screen

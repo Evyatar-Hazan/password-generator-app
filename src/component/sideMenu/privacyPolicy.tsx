@@ -5,7 +5,7 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../navigation/rootStackParamList';
 import * as React from 'react';
 import Svg, {Defs, Path, G, Mask, Use} from 'react-native-svg';
-import theme from '../../style';
+import {themeMode} from '../../style';
 
 const PrivacyPolicyIcon = () => {
   return (
@@ -28,10 +28,10 @@ const PrivacyPolicyIcon = () => {
         fill="none"
         fillRule="evenodd">
         <G transform="translate(25 18)">
-          <Mask id="c" fill={theme.colors.white}>
+          <Mask id="c" fill={themeMode('whiteIcon')}>
             <Use xlinkHref="#b" />
           </Mask>
-          <G mask="url(#c)" fill={theme.colors.black}>
+          <G mask="url(#c)" fill={themeMode('black')}>
             <Path transform="translate(-2 -2)" d="M0 0H24V24H0z" />
           </G>
         </G>
@@ -53,7 +53,9 @@ const PrivacyPolicy = ({navigation}: PrivacyPolicy) => {
       <Text>
         <PrivacyPolicyIcon />
         <Text>{'  '}</Text>
-        <Text style={Styles.menuItemText}>{t('privacyPolicy.title')}</Text>
+        <Text style={{...Styles.menuItemText, color: themeMode('text')}}>
+          {t('privacyPolicy.title')}
+        </Text>
       </Text>
     </TouchableOpacity>
   );

@@ -17,6 +17,7 @@ import ShareApp from './shareApp';
 import AboutUs from './aboutUs';
 import appLogo from './app_logo.png';
 import DarkMode from './darkMode';
+import {themeMode} from '../../style';
 
 interface SideMenuProps {
   isVisible: boolean;
@@ -43,7 +44,11 @@ const SideMenu: React.FC<SideMenuProps> = ({
       backdropOpacity={0.4}
       avoidKeyboard={true}
       deviceHeight={height + 120}>
-      <View style={Styles.modalContent}>
+      <View
+        style={{
+          ...Styles.modalContent,
+          backgroundColor: themeMode('background'),
+        }}>
         <ScrollView>
           <TouchableOpacity style={Styles.logoImageContent}>
             <Image source={appLogo} style={Styles.logoImage} />
@@ -56,7 +61,8 @@ const SideMenu: React.FC<SideMenuProps> = ({
           <DarkMode />
           <Text>{'\n\n\n'}</Text>
           <TouchableOpacity style={Styles.privacyPolicy}>
-            <Text style={Styles.privacyPolicyText}>
+            <Text
+              style={{...Styles.privacyPolicyText, color: themeMode('text')}}>
               {t('privacyPolicy.privacyPolicy')}
             </Text>
           </TouchableOpacity>

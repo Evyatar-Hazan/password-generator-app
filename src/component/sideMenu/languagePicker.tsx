@@ -4,7 +4,7 @@ import Styles from './styles';
 import {useTranslation} from 'react-i18next';
 import RNRestart from 'react-native-restart';
 import {CountryFlag} from 'react-native-flag-creator';
-import theme from '../../style';
+import {themeMode} from '../../style';
 
 type languageMap = {
   [key: string]: string;
@@ -45,7 +45,9 @@ const LanguagePicker = () => {
             style={styles.countryFlag}
           />
           <Text>{'  '}</Text>
-          <Text style={Styles.menuItemText}>{t('sideMenu.language')}</Text>
+          <Text style={{...Styles.menuItemText, color: themeMode('text')}}>
+            {t('sideMenu.language')}
+          </Text>
         </Text>
       </TouchableOpacity>
       {showLanguages &&
@@ -60,7 +62,7 @@ const LanguagePicker = () => {
                 style={styles.countryFlag}
               />
               <Text>{'  '}</Text>
-              <Text style={Styles.menuItemText}>
+              <Text style={{...Styles.menuItemText, color: themeMode('text')}}>
                 {t(languageMap[language])}
               </Text>
             </Text>
@@ -77,6 +79,5 @@ const styles = StyleSheet.create({
     height: 18,
     width: 18,
     borderRadius: 20,
-    backgroundColor: theme.colors.grey,
   },
 });

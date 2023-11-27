@@ -3,7 +3,7 @@ import {useTranslation} from 'react-i18next';
 import Styles from './styles';
 import * as React from 'react';
 import Svg, {Defs, Path, G, Mask, Use} from 'react-native-svg';
-import theme from '../../style';
+import {themeMode} from '../../style';
 
 export const ShareIcon = () => {
   return (
@@ -26,10 +26,10 @@ export const ShareIcon = () => {
         fill="none"
         fillRule="evenodd">
         <G transform="translate(2 14)">
-          <Mask id="c" fill={theme.colors.white}>
+          <Mask id="c" fill={themeMode('whiteIcon')}>
             <Use xlinkHref="#b" />
           </Mask>
-          <G mask="url(#c)" fill={theme.colors.black}>
+          <G mask="url(#c)" fill={themeMode('black')}>
             <Path transform="translate(-2 -1)" d="M0 0H20V20H0z" />
           </G>
         </G>
@@ -59,7 +59,9 @@ const ShareApp = () => {
       <Text>
         <ShareIcon />
         <Text>{'  '}</Text>
-        <Text style={Styles.menuItemText}>{t('shareApp.title')}</Text>
+        <Text style={{...Styles.menuItemText, color: themeMode('text')}}>
+          {t('shareApp.title')}
+        </Text>
       </Text>
     </TouchableOpacity>
   );

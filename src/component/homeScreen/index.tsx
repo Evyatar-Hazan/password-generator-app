@@ -11,7 +11,7 @@ import {getHash} from '../hashHandling/index';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../navigation/rootStackParamList';
 import {useTranslation} from 'react-i18next';
-import theme from '../../style';
+import theme, {themeMode} from '../../style';
 
 type HomeScreenProps = {
   navigation: StackNavigationProp<RootStackParamList, 'HomeScreen'>;
@@ -44,7 +44,7 @@ const HomeScreen = ({navigation}: HomeScreenProps) => {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
-      style={styles.container}
+      style={{...styles.container, backgroundColor: themeMode('background')}}
       keyboardVerticalOffset={Platform.OS === 'ios' ? -64 : 0} // Adjust the value as needed
     >
       <ScrollView
@@ -54,7 +54,11 @@ const HomeScreen = ({navigation}: HomeScreenProps) => {
           <Input
             placeholder={t('homeScreen.textFirst')}
             placeholderTextColor={theme.colors.grey}
-            inputStyle={styles.input}
+            inputStyle={{
+              ...styles.input,
+              backgroundColor: themeMode('backgroundHeader'),
+              color: themeMode('text'),
+            }}
             containerStyle={styles.inputWrapper}
             inputContainerStyle={styles.inputContainerStyle}
             underlineColorAndroid="transparent"
@@ -64,7 +68,11 @@ const HomeScreen = ({navigation}: HomeScreenProps) => {
           <Input
             placeholder={t('homeScreen.secondText')}
             placeholderTextColor={theme.colors.grey}
-            inputStyle={styles.input}
+            inputStyle={{
+              ...styles.input,
+              backgroundColor: themeMode('backgroundHeader'),
+              color: themeMode('text'),
+            }}
             containerStyle={styles.inputWrapper}
             inputContainerStyle={styles.inputContainerStyle}
             underlineColorAndroid="transparent"
@@ -78,6 +86,14 @@ const HomeScreen = ({navigation}: HomeScreenProps) => {
             disabled={isSaveDisabled}
             buttonStyle={styles.saveButton}
             titleStyle={styles.saveButtonText}
+            disabledStyle={{
+              ...styles.saveButtonDisabled,
+              backgroundColor: themeMode('backgroundHeader'),
+            }}
+            disabledTitleStyle={{
+              ...styles.saveButtonDisabledTitle,
+              color: themeMode('text'),
+            }}
           />
         </View>
       </ScrollView>
@@ -117,10 +133,18 @@ const styles = StyleSheet.create({
   },
   saveButton: {
     borderRadius: 25,
-    marginTop: 10,
     backgroundColor: theme.colors.green,
   },
   saveButtonText: {
+    color: theme.colors.white,
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
+  saveButtonDisabled: {
+    borderRadius: 25,
+    backgroundColor: theme.colors.green,
+  },
+  saveButtonDisabledTitle: {
     color: theme.colors.white,
     fontWeight: 'bold',
     fontSize: 16,

@@ -11,7 +11,7 @@ import Clipboard from '@react-native-community/clipboard';
 import {Svg, Path} from 'react-native-svg';
 import {useTranslation} from 'react-i18next';
 import CustomToast from '../customToast';
-import theme from '../../style';
+import theme, {themeMode} from '../../style';
 
 type GeneratedPasswords = {
   [key: string]: string;
@@ -76,10 +76,10 @@ const OutputContainer = ({
           key={passwordType}
           onPress={() => copyToClipboard(generatedPasswords, passwordType)}>
           <View style={styles.securityLevelIndicator}>
-            <Text style={styles.label}>
+            <Text style={{...styles.label, color: themeMode('text')}}>
               {mapGeneratedPasswords[passwordType].label}
             </Text>
-            <Text style={styles.label}>
+            <Text style={{...styles.label, color: themeMode('text')}}>
               {mapGeneratedPasswords[passwordType].securityLevel}
             </Text>
           </View>

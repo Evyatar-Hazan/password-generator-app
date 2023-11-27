@@ -10,7 +10,7 @@ import {StackNavigationProp} from '@react-navigation/stack';
 import {RootStackParamList} from '../navigation/rootStackParamList';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {useTranslation} from 'react-i18next';
-import theme from '../../style';
+import theme, {themeMode} from '../../style';
 
 type AboutUsProps = {
   navigation: StackNavigationProp<RootStackParamList, 'AboutTheApp'>;
@@ -30,26 +30,37 @@ const AboutUs: React.FC<AboutUsProps> = ({navigation}) => {
   };
 
   return (
-    <ScrollView style={styles.container}>
-      <Text style={styles.header}>{t('aboutUs.title')}</Text>
-      <Text style={styles.paragraph}>{t('aboutUs.text')}</Text>
+    <ScrollView
+      style={{...styles.container, backgroundColor: themeMode('background')}}>
+      <Text style={{...styles.header, color: themeMode('text')}}>
+        {t('aboutUs.title')}
+      </Text>
+      <Text style={{...styles.paragraph, color: themeMode('text')}}>
+        {t('aboutUs.text')}
+      </Text>
 
-      <Text style={styles.paragraph}>
-        <Text style={styles.bold}>{t('aboutUs.thinkerTitle')}</Text>{' '}
+      <Text style={{...styles.paragraph, color: themeMode('text')}}>
+        <Text style={{...styles.bold, color: themeMode('text')}}>
+          {t('aboutUs.thinkerTitle')}
+        </Text>{' '}
         {t('aboutUs.thinkerName')}
         <TouchableOpacity onPress={() => openLink(thinkerLinkedinURL)}>
           <Icon name="linkedin" size={16} color={theme.colors.mainBlue} />
         </TouchableOpacity>
       </Text>
-      <Text style={styles.paragraph}>
-        <Text style={styles.bold}>{t('aboutUs.organizedByTitle')}</Text>{' '}
+      <Text style={{...styles.paragraph, color: themeMode('text')}}>
+        <Text style={{...styles.bold, color: themeMode('text')}}>
+          {t('aboutUs.organizedByTitle')}
+        </Text>{' '}
         {t('aboutUs.organizedByName')}
         <TouchableOpacity onPress={() => openLink(organizedByLinkedinURL)}>
           <Icon name="linkedin" size={16} color={theme.colors.mainBlue} />
         </TouchableOpacity>
       </Text>
-      <Text style={styles.paragraph}>
-        <Text style={styles.bold}>{t('aboutUs.linkToGithubTitle')}</Text>{' '}
+      <Text style={{...styles.paragraph, color: themeMode('text')}}>
+        <Text style={{...styles.bold, color: themeMode('text')}}>
+          {t('aboutUs.linkToGithubTitle')}
+        </Text>{' '}
         <TouchableOpacity onPress={() => openLink(githubURL)}>
           <Icon name="github" size={16} color={theme.colors.mainBlue} />
         </TouchableOpacity>

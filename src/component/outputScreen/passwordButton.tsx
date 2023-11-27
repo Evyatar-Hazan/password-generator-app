@@ -1,7 +1,7 @@
 import React from 'react';
 import {TouchableOpacity, Text, StyleSheet} from 'react-native';
 import {useTranslation} from 'react-i18next';
-import theme from '../../style';
+import theme, {themeMode} from '../../style';
 
 type levelMap = {
   [key: string]: string;
@@ -28,7 +28,7 @@ const PasswordButton = ({
       onPress={onPress}>
       <Text
         style={[
-          styles.buttonLabel,
+          {...styles.buttonLabel, color: themeMode('text')},
           isActive ? styles.activeButtonLabel : null,
         ]}>
         {t(levelMap[label])}
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
   },
   buttonLabel: {
     fontSize: 20,
-    color: theme.colors.text,
+    color: 'theme.colors.text',
   },
   activeButtonLabel: {
     color: theme.colors.white,

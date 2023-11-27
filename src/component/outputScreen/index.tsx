@@ -6,7 +6,7 @@ import {RouteProp} from '@react-navigation/native';
 import {passwordGenerator} from '../hashHandling';
 import PasswordButton from './passwordButton';
 import OutputContainer from './outputContainer';
-import theme from '../../style';
+import theme, {themeMode} from '../../style';
 
 export type OutputScreenProps = {
   navigation: StackNavigationProp<RootStackParamList, 'OutputScreen'>;
@@ -57,7 +57,8 @@ const OutputScreen: React.FC<OutputScreenProps> = ({
   }, []);
 
   return (
-    <View style={styles.container}>
+    <View
+      style={{...styles.container, backgroundColor: themeMode('background')}}>
       <View style={styles.buttonContainerTop}>
         <PasswordButton
           label="12"
