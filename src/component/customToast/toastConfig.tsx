@@ -1,5 +1,6 @@
 import {BaseToastProps, BaseToast} from 'react-native-toast-message';
 import theme from '../../style';
+import {themeMode} from '../../style';
 
 interface ToastConfigProps extends BaseToastProps {
   style?: object;
@@ -11,7 +12,11 @@ const ToastConfig: {[key: string]: (props: ToastConfigProps) => JSX.Element} = {
   success: (props: ToastConfigProps) => (
     <BaseToast
       {...props}
-      style={{borderLeftColor: theme.colors.success, ...props.style}}
+      style={{
+        borderLeftColor: theme.colors.success,
+        backgroundColor: themeMode('backgroundHeader'),
+        ...props.style,
+      }}
       contentContainerStyle={{
         paddingHorizontal: 15,
         ...props.contentContainerStyle,
@@ -19,6 +24,7 @@ const ToastConfig: {[key: string]: (props: ToastConfigProps) => JSX.Element} = {
       text1Style={{
         fontSize: 15,
         fontWeight: '400',
+        color: themeMode('text'),
         ...props.text1Style,
       }}
     />
@@ -26,7 +32,11 @@ const ToastConfig: {[key: string]: (props: ToastConfigProps) => JSX.Element} = {
   error: (props: ToastConfigProps) => (
     <BaseToast
       {...props}
-      style={{borderLeftColor: theme.colors.error, ...props.style}}
+      style={{
+        borderLeftColor: theme.colors.error,
+        backgroundColor: themeMode('backgroundHeader'),
+        ...props.style,
+      }}
       contentContainerStyle={{
         paddingHorizontal: 15,
         ...props.contentContainerStyle,
@@ -34,6 +44,7 @@ const ToastConfig: {[key: string]: (props: ToastConfigProps) => JSX.Element} = {
       text1Style={{
         fontSize: 15,
         fontWeight: '400',
+        color: themeMode('text'),
         ...props.text1Style,
       }}
     />
@@ -41,7 +52,11 @@ const ToastConfig: {[key: string]: (props: ToastConfigProps) => JSX.Element} = {
   info: (props: ToastConfigProps) => (
     <BaseToast
       {...props}
-      style={{borderLeftColor: theme.colors.info, ...props.style}}
+      style={{
+        borderLeftColor: theme.colors.info,
+        backgroundColor: themeMode('backgroundHeader'),
+        ...props.style,
+      }}
       contentContainerStyle={{
         paddingHorizontal: 15,
         ...props.contentContainerStyle,
@@ -49,6 +64,7 @@ const ToastConfig: {[key: string]: (props: ToastConfigProps) => JSX.Element} = {
       text1Style={{
         fontSize: 15,
         fontWeight: '400',
+        color: themeMode('text'),
         ...props.text1Style,
       }}
     />

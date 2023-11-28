@@ -8,7 +8,7 @@ const Main: React.FC = () => {
   return (
     <>
       <Navigation />
-      <Toast config={ToastConfig} />
+      <Toast config={ToastConfig} position="bottom" />
     </>
   );
 };
