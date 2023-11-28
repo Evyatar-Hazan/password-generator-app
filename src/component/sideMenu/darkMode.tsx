@@ -7,8 +7,8 @@ import {themeMode} from '../../style';
 
 const DarkMode = () => {
   const {t} = useTranslation();
-  const [isDarkMode, setIsDarkMode] = useState(false);
-  const {toggleColorScheme} = useTheme();
+  const {colorScheme, toggleColorScheme} = useTheme();
+  const [isDarkMode, setIsDarkMode] = useState(!!(colorScheme === 'dark'));
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
@@ -24,8 +24,11 @@ const DarkMode = () => {
           value={isDarkMode}
           onValueChange={toggleDarkMode}
           style={styles.darkModeSwitch}
-          trackColor={{false: '#767577', true: '#81b0ff'}}
-          thumbColor={isDarkMode ? '#f5dd4b' : '#f4f3f4'}
+          trackColor={{
+            false: themeMode('switchTrackColor'),
+            true: themeMode('switchTrackColor'),
+          }}
+          thumbColor={themeMode('switchThumbColor')}
         />
       </View>
     </TouchableOpacity>

@@ -55,6 +55,8 @@ const lightMode: mapMode = {
   whiteIcon: '#f4f3f4',
   black: '#000',
   backgroundHeader: '#fff',
+  switchThumbColor: '#f4f3f4',
+  switchTrackColor: '#767577',
 };
 
 const darkMode: mapMode = {
@@ -63,6 +65,8 @@ const darkMode: mapMode = {
   whiteIcon: '#f5dd4b',
   black: '#fff',
   backgroundHeader: '#282828',
+  switchThumbColor: '#f5dd4b',
+  switchTrackColor: '#81b0ff',
 };
 
 export const themeMode = (style: string) => {
