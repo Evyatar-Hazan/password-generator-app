@@ -4,7 +4,7 @@
     "textFirst": "Enter text first...",
     "secondText": "Insert second text..."
   },
-  "outputScreen": {
+  "generatedPasswords": {
     "numbersPassword": "Numbers only:",
     "lettersPassword": "Letters only:",
     "numbersAndLettersPassword": "Numbers and Letters:",
@@ -23,7 +23,7 @@
   },
   "navigation": {
     "homeScreen": "Home Screen",
-    "outputScreen": "Output Screen"
+    "generatedPasswords": "Generated Passwords"
   },
   "privacyPolicy": {
     "privacyPolicy": "By using this app, you agree to our Privacy Policy",

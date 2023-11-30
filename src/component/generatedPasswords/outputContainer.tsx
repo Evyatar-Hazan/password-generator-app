@@ -31,28 +31,28 @@ const OutputContainer = ({
     {label: string; securityLevel: string; color: string}
   > = {
     numbersPassword: {
-      label: t('outputScreen.numbersPassword'),
-      securityLevel: t('outputScreen.weak'),
+      label: t('generatedPasswords.numbersPassword'),
+      securityLevel: t('generatedPasswords.weak'),
       color: theme.colors.securePassword.weak,
     },
     lettersPassword: {
-      label: t('outputScreen.lettersPassword'),
-      securityLevel: t('outputScreen.medium'),
+      label: t('generatedPasswords.lettersPassword'),
+      securityLevel: t('generatedPasswords.medium'),
       color: theme.colors.securePassword.medium,
     },
     numbersAndLettersPassword: {
-      label: t('outputScreen.numbersAndLettersPassword'),
-      securityLevel: t('outputScreen.strong'),
+      label: t('generatedPasswords.numbersAndLettersPassword'),
+      securityLevel: t('generatedPasswords.strong'),
       color: theme.colors.securePassword.strong,
     },
     upperCasePassword: {
-      label: t('outputScreen.upperCasePassword'),
-      securityLevel: t('outputScreen.veryStrong'),
+      label: t('generatedPasswords.upperCasePassword'),
+      securityLevel: t('generatedPasswords.veryStrong'),
       color: theme.colors.securePassword.veryStrong,
     },
     transformToSign: {
-      label: t('outputScreen.transformToSign'),
-      securityLevel: t('outputScreen.superStrong'),
+      label: t('generatedPasswords.transformToSign'),
+      securityLevel: t('generatedPasswords.superStrong'),
       color: theme.colors.securePassword.superStrong,
     },
   };
@@ -65,8 +65,8 @@ const OutputContainer = ({
     const password = mapGeneratedPasswords[passwordType].label;
     CustomToast({
       type: 'info',
-      title: t('outputScreen.copyPasswordTitle'),
-      text: t('outputScreen.copyPasswordText', {password: password}),
+      title: t('generatedPasswords.copyPasswordTitle'),
+      text: t('generatedPasswords.copyPasswordText', {password: password}),
     });
   };
   return (

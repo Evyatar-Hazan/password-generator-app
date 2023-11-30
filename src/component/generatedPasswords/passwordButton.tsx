@@ -18,9 +18,9 @@ const PasswordButton = ({
 }) => {
   const {t} = useTranslation();
   const levelMap: levelMap = {
-    4: 'outputScreen.label4',
-    8: 'outputScreen.label8',
-    12: 'outputScreen.label12',
+    4: 'generatedPasswords.label4',
+    8: 'generatedPasswords.label8',
+    12: 'generatedPasswords.label12',
   };
   return (
     <TouchableOpacity

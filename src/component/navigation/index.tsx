@@ -3,7 +3,7 @@ import {TouchableOpacity} from 'react-native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 import HomeScreen from '../homeScreen/index';
-import OutputScreen from '../outputScreen/index';
+import GeneratedPasswords from '../generatedPasswords/index';
 import {useTranslation} from 'react-i18next';
 import {Svg, Path} from 'react-native-svg';
 import SideMenu from '../sideMenu/index';
@@ -71,10 +71,10 @@ const Navigation: React.FC = () => {
           }}
         />
         <Stack.Screen
-          name="OutputScreen"
-          component={OutputScreen as React.ComponentType<any>}
+          name="GeneratedPasswords"
+          component={GeneratedPasswords as React.ComponentType<any>}
           options={{
-            title: t('navigation.outputScreen'),
+            title: t('navigation.generatedPasswords'),
           }}
         />
         <Stack.Screen

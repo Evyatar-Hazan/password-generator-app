@@ -35,7 +35,7 @@ const HomeScreen = ({navigation}: HomeScreenProps) => {
   const handleSave = () => {
     if (!isSaveDisabled) {
       const hashedText = getHash(inputValue1, inputValue2);
-      navigation.navigate('OutputScreen', {hashedText});
+      navigation.navigate('GeneratedPasswords', {hashedText});
       setInputValue1('');
       setInputValue2('');
     }

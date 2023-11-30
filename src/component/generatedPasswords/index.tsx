@@ -8,19 +8,19 @@ import PasswordButton from './passwordButton';
 import OutputContainer from './outputContainer';
 import theme, {themeMode} from '../../style';
 
-export type OutputScreenProps = {
-  navigation: StackNavigationProp<RootStackParamList, 'OutputScreen'>;
-  route: RouteProp<RootStackParamList, 'OutputScreen'>;
+export type GeneratedPasswordsProps = {
+  navigation: StackNavigationProp<RootStackParamList, 'GeneratedPasswords'>;
+  route: RouteProp<RootStackParamList, 'GeneratedPasswords'>;
 };
 
 type GeneratedPasswords = {
   [key: string]: string;
 };
 
-const OutputScreen: React.FC<OutputScreenProps> = ({
+const GeneratedPasswords: React.FC<GeneratedPasswordsProps> = ({
   route,
   navigation,
-}: OutputScreenProps) => {
+}: GeneratedPasswordsProps) => {
   const {hashedText} = route.params;
   const [generatedPasswords, setGeneratedPasswords] =
     useState<GeneratedPasswords>({
@@ -96,4 +96,4 @@ const styles = StyleSheet.create({
     width: '100%',
   },
 });
-export default OutputScreen;
+export default GeneratedPasswords;

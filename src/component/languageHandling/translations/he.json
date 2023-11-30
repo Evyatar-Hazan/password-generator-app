@@ -4,7 +4,7 @@
     "textFirst": "הקלד מילה ראשונה...",
     "secondText": "הקלד מילה שנייה..."
   },
-  "outputScreen": {
+  "generatedPasswords": {
     "numbersPassword": "מספרים בלבד:",
     "lettersPassword": "אותיות בלבד:",
     "numbersAndLettersPassword": "מספרים ואותיות:",
@@ -23,7 +23,7 @@
   },
   "navigation": {
     "homeScreen": "מסך הבית",
-    "outputScreen": "מסך הפלט"
+    "generatedPasswords": "סיסמאות שנוצרו"
   },
   "privacyPolicy": {
     "privacyPolicy": "על ידי שימוש באפליקציה זו, אתה מסכים למדיניות הפרטיות שלנו ",
