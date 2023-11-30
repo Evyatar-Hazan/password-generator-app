@@ -72,7 +72,7 @@ const Navigation: React.FC = () => {
         />
         <Stack.Screen
           name="OutputScreen"
-          component={OutputScreen}
+          component={OutputScreen as React.ComponentType<any>}
           options={{
             title: t('navigation.outputScreen'),
           }}
