@@ -18,6 +18,7 @@ import AboutUs from './aboutUs';
 import appLogo from './app_logo.png';
 import DarkMode from './darkMode';
 import {themeMode} from '../../style';
+import HashKey from './hashKey';
 
 interface SideMenuProps {
   isVisible: boolean;
@@ -57,6 +58,7 @@ const SideMenu: React.FC<SideMenuProps> = ({
           <PrivacyPolicy navigation={navigation} />
           <AboutTheApp navigation={navigation} />
           <AboutUs navigation={navigation} />
+          <HashKey navigation={navigation} />
           <LanguagePicker />
           <DarkMode />
           <Text>{'\n\n\n'}</Text>

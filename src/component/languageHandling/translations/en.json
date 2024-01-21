@@ -81,6 +81,9 @@
     "organizedByName": "Evyatar Hazan ",
     "linkToGithubTitle": "Link to Github (open source): "
   },
+  "hashKey": {
+    "title": "Hash Key"
+  },
   "shareApp": {
     "title": "Share App",
     "message": "We invite you to download and use the Password-Generator application:"

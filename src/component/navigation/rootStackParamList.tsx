@@ -4,4 +4,5 @@ export type RootStackParamList = {
   PrivacyPolicy: undefined;
   AboutTheApp: undefined;
   AboutUs: undefined;
+  HashKey: undefined;
 };

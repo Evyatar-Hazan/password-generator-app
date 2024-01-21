@@ -11,6 +11,7 @@ import PrivacyPolicy from '../privacyPolicy';
 import AboutTheApp from '../aboutTheApp';
 import AboutUs from '../aboutUs';
 import {themeMode} from '../../style';
+import HashKey from '../hashKey';
 
 const Stack = createStackNavigator();
 
@@ -96,6 +97,13 @@ const Navigation: React.FC = () => {
           component={AboutUs}
           options={{
             title: t('aboutUs.title'),
+          }}
+        />
+        <Stack.Screen
+          name="HashKey"
+          component={HashKey}
+          options={{
+            title: t('hashKey.title'),
           }}
         />
       </Stack.Navigator>

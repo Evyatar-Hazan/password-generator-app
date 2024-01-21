@@ -1,7 +1,29 @@
 import CryptoJS from 'crypto-js';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
+export const generateAndSaveHashKey = async () => {
+  try {
+    const storedHashKey = await AsyncStorage.getItem('hashKey');
 
-export const getHash = (text1, text2) => {
+    if (!storedHashKey) {
+      const randomNumber = Math.floor(Math.random() * 1000);
+
+      const hashKey = getHash(randomNumber);
+
+      const nameApp =
+        process.env.NAME === undefined ? 'PasswordGenerator' : process.env.NAME;
+
+      const hashKeyPasswordGenerator = nameApp + hashKey.toString();
+
+      await AsyncStorage.setItem('hashKey', hashKeyPasswordGenerator);
+    }
+    return await AsyncStorage.getItem('hashKey');
+  } catch (error) {
+    console.error('Error storing or retrieving random number:', error);
+  }
+};
+
+export const getHash = (text1, text2 = '') => {
   const textToHash = text1 + text2;
   return CryptoJS.SHA256(textToHash).toString();
 };
@@ -26,7 +48,11 @@ export const getLettersPassword = (hash, numberCharacters) => {
   }
 };
 
-export const getNumbersAndLettersPassword = (numbers, letters, numberCharacters) => {
+export const getNumbersAndLettersPassword = (
+  numbers,
+  letters,
+  numberCharacters,
+) => {
   const maxLength = Math.max(numbers.length, letters.length);
   let numbersAndLetters = '';
 
@@ -50,11 +76,11 @@ const hashString = str => {
 };
 
 export const getUpperCasePassword = str => {
-  let changed = false; 
+  let changed = false;
   let newString = str.replace(/[a-z]/g, function (match) {
     const hash = hashString(match);
     if (hash % 2 === 0) {
-      changed = true; 
+      changed = true;
       return match.toUpperCase();
     } else {
       return match;
@@ -66,7 +92,7 @@ export const getUpperCasePassword = str => {
       return match.toUpperCase();
     });
   }
-  
+
   if (!/[a-z]/.test(newString)) {
     newString = newString.replace(/([A-Z])/, function (match) {
       return match.toLowerCase();
@@ -75,21 +101,33 @@ export const getUpperCasePassword = str => {
   return newString;
 };
 
-
-
-export const getTransformToSign = (str) => {
-  const signs = ["?", "@", "#", "$", "&", "!"];
+export const getTransformToSign = str => {
+  const signs = ['?', '@', '#', '$', '&', '!'];
   const hash = hashString(str);
   const selectedSignIndex = Math.abs(hash) % signs.length;
   const selectedSign = signs[selectedSignIndex];
   return str.replace(/[a-zA-Z0-9]/, selectedSign);
-}
+};
 
-export const passwordGenerator = (hashedText, numberCharacters) => {
+export const passwordGenerator = async (hashedText, numberCharacters) => {
+  const hashKey = await AsyncStorage.getItem('hashKey');
+
+  hashedText = hashKey + hashedText;
+
   const numbersPassword = getNumbersPassword(hashedText, numberCharacters);
   const lettersPassword = getLettersPassword(hashedText, numberCharacters);
-  const numbersAndLettersPassword = getNumbersAndLettersPassword(numbersPassword, lettersPassword, numberCharacters);
+  const numbersAndLettersPassword = getNumbersAndLettersPassword(
+    numbersPassword,
+    lettersPassword,
+    numberCharacters,
+  );
   const upperCasePassword = getUpperCasePassword(numbersAndLettersPassword);
   const transformToSign = getTransformToSign(upperCasePassword);
-  return {numbersPassword, lettersPassword, numbersAndLettersPassword, upperCasePassword, transformToSign}
-}
+  return {
+    numbersPassword,
+    lettersPassword,
+    numbersAndLettersPassword,
+    upperCasePassword,
+    transformToSign,
+  };
+};

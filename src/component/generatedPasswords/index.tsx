@@ -32,14 +32,14 @@ const GeneratedPasswords: React.FC<GeneratedPasswordsProps> = ({
     });
   const [selectedLength, setSelectedLength] = useState<number | null>(8); // Set initial value to 8
 
-  const generatePasswords = (length: number) => {
+  const generatePasswords = async (length: number) => {
     const {
       numbersPassword,
       lettersPassword,
       numbersAndLettersPassword,
       upperCasePassword,
       transformToSign,
-    } = passwordGenerator(hashedText, length);
+    } = await passwordGenerator(hashedText, length);
 
     setGeneratedPasswords({
       numbersPassword,
