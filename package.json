@@ -2,6 +2,10 @@
   "name": "password-generator",
   "version": "1.0.25",
   "private": true,
+  "android": {
+    "versionCode": 25,
+    "versionName": "1.0.25"
+  },
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",

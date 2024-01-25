@@ -1,6 +1,10 @@
 apply plugin: "com.android.application"
 apply plugin: "com.facebook.react"
 apply from: file("../../node_modules/react-native-vector-icons/fonts.gradle")
+apply from: project(':app').file("../../node_modules/@react-native-community/cli-platform-android/native_modules.gradle"); applyNativeModulesAppBuildGradle(project)
+
+def packageJsonFile = new File("../package.json")
+def packageJsonContents = new groovy.json.JsonSlurper().parseText(packageJsonFile.text)
 
 /**
  * This is the configuration block to customize your React Native Android app.
@@ -80,8 +84,8 @@ android {
         applicationId "com.passwordgeneratorevyatar"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 25
-        versionName "1.0.25"
+        versionCode packageJsonContents.android.versionCode.toInteger()
+        versionName packageJsonContents.android.versionName
     }
     signingConfigs {
         debug {
